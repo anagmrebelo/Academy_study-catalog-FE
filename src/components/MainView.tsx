@@ -6,6 +6,7 @@ export default function MainView(): JSX.Element {
     return (
         <div>
             <NavigationBar setCurrentUser={setCurrentUser} />
+            <p>{currentUser}</p>
         </div>
     );
 }
