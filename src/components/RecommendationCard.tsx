@@ -1,26 +1,23 @@
 import {
     Badge,
     Button,
-    ButtonGroup,
     Card,
     CardBody,
-    CardFooter,
-    CardHeader,
-    Divider,
     Heading,
     Image,
     Link,
     Stack,
-    Text,
-    VStack,
 } from "@chakra-ui/react";
+import { Recommendation } from "./RecommendationBoard";
 
 interface RecommendationCardProps {
     currentUser: string;
+    oneRecommendation: Recommendation;
 }
 
 export default function RecommendationCard({
     currentUser,
+    oneRecommendation,
 }: RecommendationCardProps): JSX.Element {
     const listOfTags = ["Java", "React", "Typescript"];
 
@@ -33,11 +30,10 @@ export default function RecommendationCard({
                         textTransform="uppercase"
                         textAlign={"center"}
                     >
-                        Title of the resource
+                        Title of the resource {oneRecommendation.url}
                     </Heading>
-
                     <Image
-                        src="https://www.youtube.com/watch?v=zAxmn4ihqNg"
+                        src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
                         alt="Green double couch with wooden legs"
                         borderRadius="lg"
                     />
@@ -61,6 +57,7 @@ export default function RecommendationCard({
                             ))}
                         </Stack>
                     </Stack>
+                    {currentUser !== "" && <Button>Hi</Button>}
                 </CardBody>
             </Card>
         </>
