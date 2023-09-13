@@ -1,12 +1,11 @@
 import { useState } from "react";
-import NavigationBar from "./NavigationBar";
+import LogBar from "./LogBar";
 
 export default function MainView(): JSX.Element {
     const [currentUser, setCurrentUser] = useState("");
     return (
         <div>
-            <NavigationBar setCurrentUser={setCurrentUser} />
-            <p>{currentUser}</p>
+            <LogBar setCurrentUser={setCurrentUser} currentUser={currentUser} />
         </div>
     );
 }

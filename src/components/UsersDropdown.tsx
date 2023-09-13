@@ -1,22 +1,20 @@
 import { Select } from "@chakra-ui/react";
-// import axios from "axios";
-// import { baseURL } from "./App";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
-interface NavigationBarProps {
-    setCurrentUser: (st: string) => void;
-}
-
-interface UserList {
+interface User {
     id: number;
     user_name: string;
     is_faculty: boolean;
 }
 
-export default function NavigationBar({
+interface UsersDropdownProps {
+    setCurrentUser: (st: string) => void;
+}
+
+export default function UsersDropdown({
     setCurrentUser,
-}: NavigationBarProps): JSX.Element {
-    const [listOfUsers, setListOfUsers] = useState<UserList[]>([]);
+}: UsersDropdownProps): JSX.Element {
+    const [listOfUsers, setListOfUsers] = useState<User[]>([]);
 
     useEffect(() => {
         // async function fetchUsers() {
@@ -39,25 +37,22 @@ export default function NavigationBar({
         ];
         setListOfUsers(people);
     }, []);
-
     const handleUserSelect = (selectedUser: string) =>
         setCurrentUser(selectedUser);
 
     return (
-        <div>
-            <Select
-                defaultValue={-1}
-                onChange={(e) => handleUserSelect(e.target.value)}
-            >
-                <option disabled hidden value={-1}>
-                    Select user
+        <Select
+            defaultValue={-1}
+            onChange={(e) => handleUserSelect(e.target.value)}
+        >
+            <option disabled hidden value={-1}>
+                Select user
+            </option>
+            {listOfUsers.map((u) => (
+                <option key={u.id} value={u.user_name}>
+                    {u.user_name}
                 </option>
-                {listOfUsers.map((u) => (
-                    <option key={u.id} value={u.user_name}>
-                        {u.user_name}
-                    </option>
-                ))}
-            </Select>
-        </div>
+            ))}
+        </Select>
     );
 }
