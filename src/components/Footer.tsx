@@ -1,8 +1,8 @@
-import { Link } from "@chakra-ui/react";
+import { HStack, Link } from "@chakra-ui/react";
 
 export default function Footer(): JSX.Element {
     return (
-        <div>
+        <HStack justifyContent={"center"} p={4} gap={4}>
             <Link
                 href="https://github.com/Julieta-Sanguedolce/C7C1-frontend"
                 isExternal
@@ -15,6 +15,6 @@ export default function Footer(): JSX.Element {
             >
                 Backend Repo
             </Link>
-        </div>
+        </HStack>
     );
 }
