@@ -1,6 +1,7 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import RecommendationCard from "./RecommendationCard";
 import { useEffect, useState } from "react";
+import { recommendationStartingList } from "./recommendationStartingList";
 // import axios from "axios";
 // import { baseURL } from "./App";
 
@@ -8,9 +9,29 @@ interface RecommendationBoardProps {
     currentUser: string;
 }
 
+interface UserComment {
+    user_name: string;
+    comment: string;
+}
+
 export interface Recommendation {
     url: string;
-    listOfTags: string[];
+    name: string;
+    author: string;
+    description: string;
+    content_type: string;
+    build_phase: string;
+    creation_date: Date; //verify specific type for this one
+    user_id: number;
+    recommendation_type: string;
+    // | "I recommend this resource after having used it"
+    // | "I do not recommend this resource, having used it"
+    // | "I haven't used this resource but it looks promising";
+    reason: string;
+    likes: number;
+    dislikes: number;
+    tags: string[];
+    comments: UserComment[];
 }
 
 export default function RecommendationBoard({
@@ -35,16 +56,11 @@ export default function RecommendationBoard({
 
         // fetchRecentRecommendations();
 
-        const recommendationStartingList = [
-            { url: "adfd", listOfTags: ["java", "python"] },
-            { url: "adsf", listOfTags: ["java", "python"] },
-            { url: "asdf", listOfTags: ["java", "python"] },
-        ];
         setRecommendationList(recommendationStartingList);
     }, []);
 
     return (
-        <SimpleGrid minChildWidth="300px" spacing="40px">
+        <SimpleGrid minChildWidth="100px" spacing="10px">
             {recommendationList.map((r) => (
                 <RecommendationCard
                     key={r.url}
