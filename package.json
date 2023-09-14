@@ -14,7 +14,7 @@
         "test:watch": "vitest --reporter verbose",
         "test:gui": "vitest --ui",
         "type-check": "tsc --noEmit",
-        "check-all": "yarn type-check && yarn lint && yarn format && yarn test"
+        "check-all": "yarn type-check && yarn lint && yarn format && yarn test && yarn cypress run"
     },
     "dependencies": {
         "@chakra-ui/icons": "^2.1.1",
