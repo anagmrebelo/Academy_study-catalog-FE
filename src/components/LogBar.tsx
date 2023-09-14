@@ -20,8 +20,13 @@ export default function LogBar({
                 )}
                 {currentUser !== "" && (
                     <>
-                        <h3>Logged in as {currentUser}</h3>
-                        <Button onClick={() => setCurrentUser("")}>
+                        <h3 data-testid="logged-in-user">
+                            Logged in as {currentUser}
+                        </h3>
+                        <Button
+                            onClick={() => setCurrentUser("")}
+                            data-testid="logout-btn"
+                        >
                             Logout
                         </Button>
                     </>

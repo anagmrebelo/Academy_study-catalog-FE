@@ -36,6 +36,7 @@ export default function UsersDropdown({
 
     return (
         <Select
+            data-testid="users-dropdown"
             defaultValue={-1}
             onChange={(e) => handleUserSelect(e.target.value)}
         >
