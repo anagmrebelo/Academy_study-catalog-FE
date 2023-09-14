@@ -1,5 +1,7 @@
 import { Select } from "@chakra-ui/react";
+import axios from "axios";
 import { useState, useEffect } from "react";
+import { baseURL } from "./App";
 
 interface User {
     id: number;
@@ -17,25 +19,17 @@ export default function UsersDropdown({
     const [listOfUsers, setListOfUsers] = useState<User[]>([]);
 
     useEffect(() => {
-        // async function fetchUsers() {
-        //     try {
-        //         const response = await axios.get(`${baseURL}/users`);
-        //         const responseList = response.data;
-        //         setListOfUsers(responseList);
-        //     } catch (error) {
-        //         console.error(error);
-        //     }
-        // }
+        async function fetchUsers() {
+            try {
+                const response = await axios.get(`${baseURL}/users`);
+                const responseList = response.data;
+                setListOfUsers(responseList);
+            } catch (error) {
+                console.error(error);
+            }
+        }
 
-        // fetchUsers();
-        const people = [
-            { id: 1, user_name: "John Doe", is_faculty: false },
-            { id: 2, user_name: "Jane Smith", is_faculty: true },
-            { id: 3, user_name: "Bob Johnson", is_faculty: false },
-            { id: 4, user_name: "Alice Brown", is_faculty: true },
-            { id: 5, user_name: "Ella Wilson", is_faculty: false },
-        ];
-        setListOfUsers(people);
+        fetchUsers();
     }, []);
     const handleUserSelect = (selectedUser: string) =>
         setCurrentUser(selectedUser);
