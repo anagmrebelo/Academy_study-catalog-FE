@@ -24,6 +24,7 @@ export default function RecommendationCard({
     currentUser,
     oneRecommendation,
 }: RecommendationCardProps): JSX.Element {
+    const tagList: string[] = oneRecommendation.tags.split("#");
     return (
         <>
             <Card>
@@ -48,7 +49,7 @@ export default function RecommendationCard({
                             {oneRecommendation.recommendation_type}
                         </Badge>
                         <Stack direction="row">
-                            {oneRecommendation.tags.map((t) => (
+                            {tagList.map((t) => (
                                 <Badge
                                     key={t}
                                     borderRadius="full"
