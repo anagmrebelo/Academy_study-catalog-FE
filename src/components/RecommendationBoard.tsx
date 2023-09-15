@@ -1,18 +1,18 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import RecommendationCard from "./RecommendationCard";
 import { useEffect, useState } from "react";
-import { recommendationStartingList } from "./recommendationStartingList";
-// import axios from "axios";
-// import { baseURL } from "./App";
+// import { recommendationStartingList } from "./recommendationStartingList";
+import axios from "axios";
+import { baseURL } from "./App";
 
 interface RecommendationBoardProps {
     currentUser: string;
 }
 
-interface UserComment {
-    user_name: string;
-    comment: string;
-}
+// interface UserComment {
+//     user_name: string;
+//     comment: string;
+// }
 
 export interface Recommendation {
     url: string;
@@ -30,8 +30,7 @@ export interface Recommendation {
     reason: string;
     likes: number;
     dislikes: number;
-    tags: string[];
-    comments: UserComment[];
+    tags: string;
 }
 
 export default function RecommendationBoard({
@@ -42,21 +41,21 @@ export default function RecommendationBoard({
     >([]);
 
     useEffect(() => {
-        // async function fetchRecentRecommendations() {
-        //     try {
-        //         const response = await axios.get(
-        //             `${baseURL}/recommendation/recent10`
-        //         );
-        //         const responseList = response.data;
-        //         setRecommendationList(responseList);
-        //     } catch (error) {
-        //         console.error(error);
-        //     }
-        // }
+        async function fetchRecentRecommendations() {
+            try {
+                const response = await axios.get(
+                    `${baseURL}/recommendation/recent10`
+                );
+                const responseList = response.data;
+                setRecommendationList(responseList);
+            } catch (error) {
+                console.error(error);
+            }
+        }
 
-        // fetchRecentRecommendations();
+        fetchRecentRecommendations();
 
-        setRecommendationList(recommendationStartingList);
+        // setRecommendationList(recommendationStartingList);
     }, []);
 
     return (
