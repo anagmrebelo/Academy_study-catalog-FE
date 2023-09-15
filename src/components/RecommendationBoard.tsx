@@ -1,7 +1,7 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import RecommendationCard from "./RecommendationCard";
 import { useEffect, useState } from "react";
-import { recommendationStartingList } from "./recommendationStartingList";
+// import { recommendationStartingList } from "./recommendationStartingList";
 import axios from "axios";
 import { baseURL } from "./App";
 
