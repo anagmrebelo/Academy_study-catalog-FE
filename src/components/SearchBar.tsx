@@ -22,13 +22,15 @@ export function SearchBar({
     setRecommendationList,
 }: SearchBarProps): JSX.Element {
     async function handleSearch() {
-        const editedSearchPhrase = searchedPhrase.replace(/ /g, "%20");
+        let editedSearchPhrase = searchedPhrase;
+        editedSearchPhrase === '' ? editedSearchPhrase = "null" : editedSearchPhrase.replace(/ /g, "%20");
         try {
             const response = await axios.get(
-                `${baseURL}/recommendation/${editedSearchPhrase}/tags`
+                `${baseURL}/recommendation/${editedSearchPhrase}/null`
             );
             const responseList = response.data;
             setRecommendationList(responseList);
+            setSearchedPhrase("")
         } catch (error) {
             console.error("Handle search error", error);
         }
