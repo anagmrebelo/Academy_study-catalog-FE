@@ -24,7 +24,9 @@ export default function RecommendationCard({
     currentUser,
     oneRecommendation,
 }: RecommendationCardProps): JSX.Element {
-    const tagList: string[] = oneRecommendation.tags.split("#");
+    const tagList: string[] = oneRecommendation.tags
+        .split("#")
+        .filter((t) => t !== "");
     return (
         <>
             <Card>
