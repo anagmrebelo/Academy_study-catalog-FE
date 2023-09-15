@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 // import { recommendationStartingList } from "./recommendationStartingList";
 import axios from "axios";
 import { baseURL } from "./App";
+import { SearchBar } from "./SearchBar";
 
 interface RecommendationBoardProps {
     currentUser: string;
@@ -39,6 +40,7 @@ export default function RecommendationBoard({
     const [recommendationList, setRecommendationList] = useState<
         Recommendation[]
     >([]);
+    const [searchedPhrase, setSearchedPhrase] = useState("");
 
     useEffect(() => {
         async function fetchRecentRecommendations() {
@@ -59,14 +61,20 @@ export default function RecommendationBoard({
     }, []);
 
     return (
-        <SimpleGrid minChildWidth="100px" spacing="10px">
-            {recommendationList.map((r) => (
-                <RecommendationCard
-                    key={r.url}
-                    oneRecommendation={r}
-                    currentUser={currentUser}
-                />
-            ))}
-        </SimpleGrid>
+        <>
+            <SearchBar
+                searchedPhrase={searchedPhrase}
+                setSearchedPhrase={setSearchedPhrase}
+            />
+            <SimpleGrid minChildWidth="100px" spacing="10px">
+                {recommendationList.map((r) => (
+                    <RecommendationCard
+                        key={r.url}
+                        oneRecommendation={r}
+                        currentUser={currentUser}
+                    />
+                ))}
+            </SimpleGrid>
+        </>
     );
 }
