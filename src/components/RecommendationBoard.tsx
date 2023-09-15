@@ -1,10 +1,10 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import RecommendationCard from "./RecommendationCard";
 import { useEffect, useState } from "react";
-// import { recommendationStartingList } from "./recommendationStartingList";
 import axios from "axios";
 import { baseURL } from "./App";
 import { SearchBar } from "./SearchBar";
+import TagCloud from "./TagCloud";
 
 interface RecommendationBoardProps {
     currentUser: string;
@@ -40,7 +40,8 @@ export default function RecommendationBoard({
     const [recommendationList, setRecommendationList] = useState<
         Recommendation[]
     >([]);
-    const [searchedPhrase, setSearchedPhrase] = useState("");
+    const [searchedPhrase, setSearchedPhrase] = useState("null");
+    // const [searchTags, setsearchTags] = useState("null");
 
     useEffect(() => {
         async function fetchRecentRecommendations() {
@@ -65,16 +66,21 @@ export default function RecommendationBoard({
             <SearchBar
                 searchedPhrase={searchedPhrase}
                 setSearchedPhrase={setSearchedPhrase}
+                setRecommendationList={setRecommendationList}
             />
-            <SimpleGrid minChildWidth="100px" spacing="10px">
-                {recommendationList.map((r) => (
-                    <RecommendationCard
-                        key={r.url}
-                        oneRecommendation={r}
-                        currentUser={currentUser}
-                    />
-                ))}
-            </SimpleGrid>
+            <div>
+                <SimpleGrid minChildWidth="100px" spacing="10px">
+                    {recommendationList.map((r) => (
+                        <RecommendationCard
+                            key={r.url}
+                            oneRecommendation={r}
+                            currentUser={currentUser}
+                        />
+                    ))}
+                </SimpleGrid>
+
+                <TagCloud />
+            </div>
         </>
     );
 }
