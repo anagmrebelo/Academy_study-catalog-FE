@@ -1,10 +1,11 @@
-import { Box, Container, SimpleGrid } from "@chakra-ui/react";
+import { Box, Container, HStack, SimpleGrid } from "@chakra-ui/react";
 import RecommendationCard from "./RecommendationCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL } from "./App";
 import { SearchBar } from "./SearchBar";
 import TagCloud from "./TagCloud";
+import UserMenu from "./UserMenu";
 
 interface RecommendationBoardProps {
     currentUser: string;
@@ -49,13 +50,16 @@ export default function RecommendationBoard({
 
     return (
         <>
-            <SearchBar
-                searchedPhrase={searchedPhrase}
-                setSearchedPhrase={setSearchedPhrase}
-                setRecommendationList={setRecommendationList}
-                searchTags={searchTags}
-                setSearchTags={setSearchTags}
-            />
+            <HStack>
+                {currentUser !== "" && <UserMenu />}
+                <SearchBar
+                    searchedPhrase={searchedPhrase}
+                    setSearchedPhrase={setSearchedPhrase}
+                    setRecommendationList={setRecommendationList}
+                    searchTags={searchTags}
+                    setSearchTags={setSearchTags}
+                />
+            </HStack>
             <div style={{ display: "flex", flexDirection: "row" }}>
                 <SimpleGrid spacing="10px" width="70%" columns={3}>
                     {recommendationList.map((r) => (
