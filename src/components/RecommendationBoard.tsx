@@ -1,4 +1,4 @@
-import { Container, SimpleGrid } from "@chakra-ui/react";
+import { Box, Container, SimpleGrid } from "@chakra-ui/react";
 import RecommendationCard from "./RecommendationCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -44,19 +44,7 @@ export default function RecommendationBoard({
     const [searchTags, setSearchTags] = useState<string[]>([]);
 
     useEffect(() => {
-        async function fetchRecentRecommendations() {
-            try {
-                const response = await axios.get(
-                    `${baseURL}/recommendation/recent10`
-                );
-                const responseList = response.data;
-                setRecommendationList(responseList);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        fetchRecentRecommendations();
+        fetchRecentRecommendations(setRecommendationList);
     }, []);
 
     return (
@@ -66,15 +54,22 @@ export default function RecommendationBoard({
                 setSearchedPhrase={setSearchedPhrase}
                 setRecommendationList={setRecommendationList}
                 searchTags={searchTags}
+                setSearchTags={setSearchTags}
             />
             <div style={{ display: "flex", flexDirection: "row" }}>
-                <SimpleGrid minChildWidth="100px" spacing="10px" width="70%">
+                <SimpleGrid
+                    spacing="10px"
+                    width="70%"
+                    columns={3}
+                    // flex={"wrap"}
+                >
                     {recommendationList.map((r) => (
-                        <RecommendationCard
-                            key={r.url}
-                            oneRecommendation={r}
-                            currentUser={currentUser}
-                        />
+                        <Box key={r.url}>
+                            <RecommendationCard
+                                oneRecommendation={r}
+                                currentUser={currentUser}
+                            />
+                        </Box>
                     ))}
                 </SimpleGrid>
                 <Container width={"30%"}>
@@ -86,4 +81,16 @@ export default function RecommendationBoard({
             </div>
         </>
     );
+}
+
+export async function fetchRecentRecommendations(
+    setRecommendationList: (rec: Recommendation[]) => void
+) {
+    try {
+        const response = await axios.get(`${baseURL}/recommendation/recent10`);
+        const responseList = response.data;
+        setRecommendationList(responseList);
+    } catch (error) {
+        console.error(error);
+    }
 }

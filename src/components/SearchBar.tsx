@@ -6,15 +6,19 @@ import {
     InputLeftElement,
     IconButton,
 } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
+import { ArrowLeftIcon, SearchIcon } from "@chakra-ui/icons";
 import axios from "axios";
-import { Recommendation } from "./RecommendationBoard";
+import {
+    Recommendation,
+    fetchRecentRecommendations,
+} from "./RecommendationBoard";
 
 interface SearchBarProps {
     searchedPhrase: string;
     setSearchedPhrase: (st: string) => void;
     setRecommendationList: (arr: Recommendation[]) => void;
     searchTags: string[];
+    setSearchTags: (st: string[]) => void;
 }
 
 export function SearchBar({
@@ -22,6 +26,7 @@ export function SearchBar({
     setSearchedPhrase,
     setRecommendationList,
     searchTags,
+    setSearchTags,
 }: SearchBarProps): JSX.Element {
     async function handleSearch() {
         let editedSearchPhrase = searchedPhrase;
@@ -39,11 +44,15 @@ export function SearchBar({
             );
             const responseList = response.data;
             setRecommendationList(responseList);
-            setSearchedPhrase("");
         } catch (error) {
             console.error("Handle search error", error);
         }
     }
+    const handleReset = () => {
+        setSearchTags([]);
+        setSearchedPhrase("");
+        fetchRecentRecommendations(setRecommendationList);
+    };
     return (
         <div
             style={{
@@ -53,8 +62,20 @@ export function SearchBar({
             }}
         >
             <div style={{ width: "70%" }}>
-                <InputGroup size="md" margin={"20px"}>
-                    <InputLeftElement width="4.5rem">
+                <InputGroup size="md" margin={"0.5rem"}>
+                    <InputLeftElement
+                        width="4.5rem"
+                        gap={"0.5rem"}
+                        marginLeft={"0.5rem"}
+                    >
+                        <IconButton
+                            h="1.75rem"
+                            size="sm"
+                            colorScheme="orange"
+                            aria-label="Reset search"
+                            icon={<ArrowLeftIcon />}
+                            onClick={handleReset}
+                        />
                         <IconButton
                             h="1.75rem"
                             size="sm"
@@ -65,7 +86,7 @@ export function SearchBar({
                         />
                     </InputLeftElement>
                     <Input
-                        paddingLeft={"70px"}
+                        paddingLeft={"100px"}
                         placeholder="Search for a recommendation..."
                         value={searchedPhrase}
                         onChange={(e) => setSearchedPhrase(e.target.value)}

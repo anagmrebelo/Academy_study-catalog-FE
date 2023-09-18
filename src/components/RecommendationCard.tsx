@@ -36,6 +36,7 @@ export default function RecommendationCard({
                         size="md"
                         textTransform="uppercase"
                         textAlign={"center"}
+                        noOfLines={1}
                     >
                         {oneRecommendation.name}
                     </Heading>
@@ -48,17 +49,20 @@ export default function RecommendationCard({
                         <Link href={oneRecommendation.url} isExternal>
                             Resource link
                         </Link>
-                        <Badge colorScheme="purple" whiteSpace="normal">
+                        <Badge
+                            colorScheme="purple"
+                            whiteSpace="normal"
+                            noOfLines={3}
+                        >
                             {oneRecommendation.recommendation_type}
                         </Badge>
-                        <Stack direction="row">
+                        <Stack direction="row" height={"1.5rem"} noOfLines={1}>
                             {tagList.map((t) => (
                                 <Badge
                                     key={t}
                                     borderRadius="full"
                                     px="2"
                                     colorScheme="teal"
-                                    // whiteSpace="normal"
                                 >
                                     {t}
                                 </Badge>
