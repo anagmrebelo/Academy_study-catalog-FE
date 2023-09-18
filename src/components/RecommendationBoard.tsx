@@ -1,10 +1,10 @@
-import { SimpleGrid } from "@chakra-ui/react";
+import { Container, SimpleGrid } from "@chakra-ui/react";
 import RecommendationCard from "./RecommendationCard";
 import { useEffect, useState } from "react";
-// import { recommendationStartingList } from "./recommendationStartingList";
 import axios from "axios";
 import { baseURL } from "./App";
 import { SearchBar } from "./SearchBar";
+import TagCloud from "./TagCloud";
 
 interface RecommendationBoardProps {
     currentUser: string;
@@ -41,6 +41,7 @@ export default function RecommendationBoard({
         Recommendation[]
     >([]);
     const [searchedPhrase, setSearchedPhrase] = useState("");
+    // const [searchTags, setsearchTags] = useState("");
 
     useEffect(() => {
         async function fetchRecentRecommendations() {
@@ -56,8 +57,6 @@ export default function RecommendationBoard({
         }
 
         fetchRecentRecommendations();
-
-        // setRecommendationList(recommendationStartingList);
     }, []);
 
     return (
@@ -65,16 +64,22 @@ export default function RecommendationBoard({
             <SearchBar
                 searchedPhrase={searchedPhrase}
                 setSearchedPhrase={setSearchedPhrase}
+                setRecommendationList={setRecommendationList}
             />
-            <SimpleGrid minChildWidth="100px" spacing="10px">
-                {recommendationList.map((r) => (
-                    <RecommendationCard
-                        key={r.url}
-                        oneRecommendation={r}
-                        currentUser={currentUser}
-                    />
-                ))}
-            </SimpleGrid>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+                <SimpleGrid minChildWidth="100px" spacing="10px" width="70%">
+                    {recommendationList.map((r) => (
+                        <RecommendationCard
+                            key={r.url}
+                            oneRecommendation={r}
+                            currentUser={currentUser}
+                        />
+                    ))}
+                </SimpleGrid>
+                <Container width={"30%"}>
+                    <TagCloud />
+                </Container>
+            </div>
         </>
     );
 }

@@ -32,6 +32,7 @@ export default function RecommendationCard({
             <Card>
                 <CardBody>
                     <Heading
+                        data-testid="card-heading"
                         size="md"
                         textTransform="uppercase"
                         textAlign={"center"}
@@ -47,7 +48,7 @@ export default function RecommendationCard({
                         <Link href={oneRecommendation.url} isExternal>
                             Resource link
                         </Link>
-                        <Badge colorScheme="purple">
+                        <Badge colorScheme="purple" whiteSpace="normal">
                             {oneRecommendation.recommendation_type}
                         </Badge>
                         <Stack direction="row">
