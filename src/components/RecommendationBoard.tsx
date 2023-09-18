@@ -1,4 +1,4 @@
-import { SimpleGrid } from "@chakra-ui/react";
+import { Container, SimpleGrid } from "@chakra-ui/react";
 import RecommendationCard from "./RecommendationCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -57,8 +57,6 @@ export default function RecommendationBoard({
         }
 
         fetchRecentRecommendations();
-
-        // setRecommendationList(recommendationStartingList);
     }, []);
 
     return (
@@ -68,9 +66,8 @@ export default function RecommendationBoard({
                 setSearchedPhrase={setSearchedPhrase}
                 setRecommendationList={setRecommendationList}
             />
-                    <TagCloud />
-            <div>
-                <SimpleGrid minChildWidth="100px" spacing="10px">
+            <div style={{ display: "flex", flexDirection: "row" }}>
+                <SimpleGrid minChildWidth="100px" spacing="10px" width="70%">
                     {recommendationList.map((r) => (
                         <RecommendationCard
                             key={r.url}
@@ -79,7 +76,9 @@ export default function RecommendationBoard({
                         />
                     ))}
                 </SimpleGrid>
-
+                <Container width={"30%"}>
+                    <TagCloud />
+                </Container>
             </div>
         </>
     );

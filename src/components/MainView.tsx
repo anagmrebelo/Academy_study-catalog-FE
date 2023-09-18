@@ -8,7 +8,6 @@ export default function MainView(): JSX.Element {
         <div>
             <LogBar setCurrentUser={setCurrentUser} currentUser={currentUser} />
             <RecommendationBoard currentUser={currentUser} />
-        
         </div>
     );
 }
