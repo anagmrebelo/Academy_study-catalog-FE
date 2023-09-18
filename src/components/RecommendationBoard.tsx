@@ -57,12 +57,7 @@ export default function RecommendationBoard({
                 setSearchTags={setSearchTags}
             />
             <div style={{ display: "flex", flexDirection: "row" }}>
-                <SimpleGrid
-                    spacing="10px"
-                    width="70%"
-                    columns={3}
-                    // flex={"wrap"}
-                >
+                <SimpleGrid spacing="10px" width="70%" columns={3}>
                     {recommendationList.map((r) => (
                         <Box key={r.url}>
                             <RecommendationCard
