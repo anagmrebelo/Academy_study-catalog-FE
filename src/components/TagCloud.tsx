@@ -6,8 +6,15 @@ import axios from "axios";
 interface TagCloudView {
     tag_name: string;
 }
+interface TagCloudProps {
+    searchTags: string[];
+    setSearchTags: (st: string[]) => void;
+}
 
-export default function TagCloud(): JSX.Element {
+export default function TagCloud({
+    searchTags,
+    setSearchTags,
+}: TagCloudProps): JSX.Element {
     const [listOfTags, setListOfTags] = useState<TagCloudView[]>([]);
 
     const fetchTags = useCallback(async () => {
@@ -22,11 +29,29 @@ export default function TagCloud(): JSX.Element {
     useEffect(() => {
         fetchTags();
     }, [fetchTags]);
-
+    function handleClickOnTag(tag_name: string): void {
+        if (searchTags.includes(tag_name)) {
+            const updatedArray = searchTags.filter((item) => item !== tag_name);
+            setSearchTags(updatedArray);
+        } else {
+            setSearchTags([...searchTags, tag_name]);
+        }
+    }
+    console.log(searchTags);
+    function setColorOfButton(tag_name: string) {
+        if (searchTags.includes(tag_name)) {
+            return "blue";
+        }
+    }
     return (
         <div>
             {listOfTags.map((t) => (
-                <Button key={t.tag_name} margin={"3px"}>
+                <Button
+                    key={t.tag_name}
+                    margin={"3px"}
+                    onClick={() => handleClickOnTag(t.tag_name)}
+                    colorScheme={setColorOfButton(t.tag_name)}
+                >
                     {t.tag_name}
                 </Button>
             ))}
