@@ -41,7 +41,7 @@ export default function RecommendationBoard({
         Recommendation[]
     >([]);
     const [searchedPhrase, setSearchedPhrase] = useState("");
-    // const [searchTags, setsearchTags] = useState("");
+    const [searchTags, setSearchTags] = useState<string[]>([]);
 
     useEffect(() => {
         async function fetchRecentRecommendations() {
@@ -65,6 +65,7 @@ export default function RecommendationBoard({
                 searchedPhrase={searchedPhrase}
                 setSearchedPhrase={setSearchedPhrase}
                 setRecommendationList={setRecommendationList}
+                searchTags={searchTags}
             />
             <div style={{ display: "flex", flexDirection: "row" }}>
                 <SimpleGrid minChildWidth="100px" spacing="10px" width="70%">
@@ -77,7 +78,10 @@ export default function RecommendationBoard({
                     ))}
                 </SimpleGrid>
                 <Container width={"30%"}>
-                    <TagCloud />
+                    <TagCloud
+                        searchTags={searchTags}
+                        setSearchTags={setSearchTags}
+                    />
                 </Container>
             </div>
         </>

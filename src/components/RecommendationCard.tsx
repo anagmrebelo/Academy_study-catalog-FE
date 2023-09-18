@@ -58,6 +58,7 @@ export default function RecommendationCard({
                                     borderRadius="full"
                                     px="2"
                                     colorScheme="teal"
+                                    // whiteSpace="normal"
                                 >
                                     {t}
                                 </Badge>

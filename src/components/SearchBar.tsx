@@ -14,21 +14,28 @@ interface SearchBarProps {
     searchedPhrase: string;
     setSearchedPhrase: (st: string) => void;
     setRecommendationList: (arr: Recommendation[]) => void;
+    searchTags: string[];
 }
 
 export function SearchBar({
     searchedPhrase,
     setSearchedPhrase,
     setRecommendationList,
+    searchTags,
 }: SearchBarProps): JSX.Element {
     async function handleSearch() {
         let editedSearchPhrase = searchedPhrase;
         editedSearchPhrase === ""
             ? (editedSearchPhrase = "null")
             : editedSearchPhrase.replace(/ /g, "%20");
+        let editedTags = searchTags.join("").replace(/#/g, "%23");
+        if (editedTags === "") {
+            editedTags = "null";
+        }
+
         try {
             const response = await axios.get(
-                `${baseURL}/recommendation/${editedSearchPhrase}/null`
+                `${baseURL}/recommendation/${editedSearchPhrase}/${editedTags}`
             );
             const responseList = response.data;
             setRecommendationList(responseList);
