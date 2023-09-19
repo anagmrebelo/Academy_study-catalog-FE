@@ -2,10 +2,11 @@
 // import { baseURL } from "./App";
 import { Button, HStack } from "@chakra-ui/react";
 import UsersDropdown from "./UsersDropdown";
+import { User } from "../types/User";
 
 interface LogBarProps {
-    currentUser: string;
-    setCurrentUser: (st: string) => void;
+    currentUser: User | undefined;
+    setCurrentUser: (user: User | undefined) => void;
 }
 
 export default function LogBar({
@@ -15,16 +16,16 @@ export default function LogBar({
     return (
         <div>
             <HStack justifyContent={"space-between"} p={4}>
-                {currentUser === "" && (
+                {currentUser === undefined && (
                     <UsersDropdown setCurrentUser={setCurrentUser} />
                 )}
-                {currentUser !== "" && (
+                {currentUser !== undefined && (
                     <>
                         <h3 data-testid="logged-in-user">
-                            Logged in as {currentUser}
+                            Logged in as {currentUser.user_name}
                         </h3>
                         <Button
-                            onClick={() => setCurrentUser("")}
+                            onClick={() => setCurrentUser(undefined)}
                             data-testid="logout-btn"
                         >
                             Logout
