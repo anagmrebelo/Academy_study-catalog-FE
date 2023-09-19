@@ -2,15 +2,10 @@ import { Select } from "@chakra-ui/react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { baseURL } from "./App";
-
-interface User {
-    id: number;
-    user_name: string;
-    is_faculty: boolean;
-}
+import { User } from "../types/User";
 
 interface UsersDropdownProps {
-    setCurrentUser: (st: string) => void;
+    setCurrentUser: (user: User | undefined) => void;
 }
 
 export default function UsersDropdown({
@@ -31,8 +26,13 @@ export default function UsersDropdown({
 
         fetchUsers();
     }, []);
-    const handleUserSelect = (selectedUser: string) =>
+
+    const handleUserSelect = (selectedUserName: string) => {
+        const selectedUser = listOfUsers.find(
+            (oneUser) => oneUser.user_name === selectedUserName
+        );
         setCurrentUser(selectedUser);
+    };
 
     return (
         <Select

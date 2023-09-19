@@ -5,9 +5,10 @@ import axios from "axios";
 import { baseURL } from "./App";
 import { SearchBar } from "./SearchBar";
 import TagCloud from "./TagCloud";
+import { User } from "../types/User";
 
 interface RecommendationBoardProps {
-    currentUser: string;
+    currentUser: User | undefined;
 }
 
 // interface UserComment {

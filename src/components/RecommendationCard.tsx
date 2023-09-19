@@ -10,9 +10,10 @@ import {
 import { Recommendation } from "./RecommendationBoard";
 import VotingArea from "./VotingArea";
 import TagsArea from "./TagsArea";
+import { User } from "../types/User";
 
 interface RecommendationCardProps {
-    currentUser: string;
+    currentUser: User | undefined;
     oneRecommendation: Recommendation;
 }
 
