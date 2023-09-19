@@ -1,6 +1,7 @@
 import { HStack, Tag, TagLeftIcon, TagLabel } from "@chakra-ui/react";
 import { FiThumbsUp, FiThumbsDown } from "react-icons/fi";
 import { Recommendation } from "./RecommendationBoard";
+import { useState } from "react";
 
 interface VotingAreaProps {
     currentUser: string;
@@ -11,7 +12,8 @@ export default function VotingArea({
     currentUser,
     oneRecommendation,
 }: VotingAreaProps): JSX.Element {
-    console.log(oneRecommendation)
+    const [_isLiked, _setLike] = useState<boolean | undefined>(undefined);
+
     return (
         <>
             {currentUser !== "" && (
@@ -29,3 +31,5 @@ export default function VotingArea({
         </>
     );
 }
+
+//border="2px solid black"
