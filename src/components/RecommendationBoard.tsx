@@ -52,7 +52,7 @@ export default function RecommendationBoard({
     return (
         <>
             <HStack>
-                {currentUser !== "" && <UserMenu />}
+                {currentUser !== undefined && <UserMenu />}
                 <SearchBar
                     searchedPhrase={searchedPhrase}
                     setSearchedPhrase={setSearchedPhrase}
