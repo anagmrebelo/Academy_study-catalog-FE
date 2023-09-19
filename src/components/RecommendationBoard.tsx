@@ -6,9 +6,10 @@ import { baseURL } from "./App";
 import { SearchBar } from "./SearchBar";
 import TagCloud from "./TagCloud";
 import UserMenu from "./UserMenu";
+import { User } from "../types/User";
 
 interface RecommendationBoardProps {
-    currentUser: string;
+    currentUser: User | undefined;
 }
 
 // interface UserComment {
@@ -30,8 +31,8 @@ export interface Recommendation {
     // | "I do not recommend this resource, having used it"
     // | "I haven't used this resource but it looks promising";
     reason: string;
-    likes: number;
-    dislikes: number;
+    like_count: number;
+    dislike_count: number;
     tags: string;
 }
 

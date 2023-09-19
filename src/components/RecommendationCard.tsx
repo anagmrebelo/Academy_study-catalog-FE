@@ -2,21 +2,18 @@ import {
     Badge,
     Card,
     CardBody,
-    HStack,
     Heading,
     Image,
     Link,
     Stack,
-    Tag,
-    TagLabel,
-    TagLeftIcon,
 } from "@chakra-ui/react";
 import { Recommendation } from "./RecommendationBoard";
-
-import { FiThumbsDown, FiThumbsUp } from "react-icons/fi";
+import VotingArea from "./VotingArea";
+import TagsArea from "./TagsArea";
+import { User } from "../types/User";
 
 interface RecommendationCardProps {
-    currentUser: string;
+    currentUser: User | undefined;
     oneRecommendation: Recommendation;
 }
 
@@ -24,9 +21,6 @@ export default function RecommendationCard({
     currentUser,
     oneRecommendation,
 }: RecommendationCardProps): JSX.Element {
-    const tagList: string[] = oneRecommendation.tags
-        .split("#")
-        .filter((t) => t !== "");
     return (
         <>
             <Card>
@@ -56,37 +50,12 @@ export default function RecommendationCard({
                         >
                             {oneRecommendation.recommendation_type}
                         </Badge>
-                        <Stack direction="row" height={"1.5rem"} noOfLines={1}>
-                            {tagList.map((t) => (
-                                <Badge
-                                    key={t}
-                                    borderRadius="full"
-                                    px="2"
-                                    colorScheme="teal"
-                                >
-                                    {t}
-                                </Badge>
-                            ))}
-                        </Stack>
+                        <TagsArea oneRecommendation={oneRecommendation} />
                     </Stack>
-                    {currentUser !== "" && (
-                        <HStack spacing={4} justifyContent={"right"}>
-                            <Tag
-                                size={"sm"}
-                                variant="subtle"
-                                colorScheme="green"
-                            >
-                                <TagLeftIcon boxSize="12px" as={FiThumbsUp} />
-                                <TagLabel>{oneRecommendation.likes}</TagLabel>
-                            </Tag>
-                            <Tag size={"sm"} variant="subtle" colorScheme="red">
-                                <TagLeftIcon boxSize="12px" as={FiThumbsDown} />
-                                <TagLabel>
-                                    {oneRecommendation.dislikes}
-                                </TagLabel>
-                            </Tag>
-                        </HStack>
-                    )}
+                    <VotingArea
+                        currentUser={currentUser}
+                        oneRecommendation={oneRecommendation}
+                    />
                 </CardBody>
             </Card>
         </>
