@@ -29,8 +29,8 @@ export interface Recommendation {
     // | "I do not recommend this resource, having used it"
     // | "I haven't used this resource but it looks promising";
     reason: string;
-    likes: number;
-    dislikes: number;
+    like_count: number;
+    dislike_count: number;
     tags: string;
 }
 
