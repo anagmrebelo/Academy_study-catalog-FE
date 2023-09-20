@@ -4,6 +4,7 @@ import { Recommendation } from "../RecommendationBoard";
 import ReasonArea from "./ReasonArea";
 import TagsArea from "./TagsArea";
 import VotingArea from "./VotingArea";
+import { CheckboxArea } from "./CheckboxArea";
 
 interface RecommendationCardProps {
     currentUser: User | undefined;
@@ -36,12 +37,16 @@ export default function RecommendationCard({
                         alt="Green double couch with wooden legs"
                         borderRadius="lg"
                     />
-                    <Stack p={4}>
+                    <Stack p={5}>
                         <Link href={oneRecommendation.url} isExternal>
                             Resource link
                         </Link>
                         <ReasonArea oneRecommendation={oneRecommendation} />
                         <TagsArea oneRecommendation={oneRecommendation} />
+                        <CheckboxArea
+                            currentUser={currentUser}
+                            oneRecommendation={oneRecommendation}
+                        />
                     </Stack>
                     <VotingArea
                         currentUser={currentUser}
