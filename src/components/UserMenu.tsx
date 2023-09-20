@@ -1,11 +1,16 @@
 import { Button } from "@chakra-ui/react";
-import AddNewResource from "./AddNewResource";
+import CheckAndAddResources from "./CheckAndAddResources";
+import { User } from "../types/User";
 
-export default function UserMenu(): JSX.Element {
+interface UserMenuProps {
+    currentUser: User;
+}
+
+export default function UserMenu({ currentUser }: UserMenuProps): JSX.Element {
     return (
         <>
             <Button>My Study View</Button>
-            <AddNewResource />
+            <CheckAndAddResources currentUser={currentUser} />
         </>
     );
 }
