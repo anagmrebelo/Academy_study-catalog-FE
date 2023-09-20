@@ -4,13 +4,16 @@ import { useState } from "react";
 import CheckUrl from "./CheckUrl";
 import AddResouce from "./AddResource";
 import { User } from "../types/User";
+import { Recommendation } from "./RecommendationBoard";
 
 interface CheckAndAddResourcesProps {
     currentUser: User;
+    setRecommendationList: (r: Recommendation[]) => void;
 }
 
 export default function CheckAndAddResources({
     currentUser,
+    setRecommendationList,
 }: CheckAndAddResourcesProps): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [userUrl, setUserUrl] = useState("");
@@ -38,6 +41,7 @@ export default function CheckAndAddResources({
             )}
             {recommendationInputView && (
                 <AddResouce
+                    setRecommendationList={setRecommendationList}
                     setRecommendationInputView={setRecommendationInputView}
                     onClose={onClose}
                     isOpen={isOpen}

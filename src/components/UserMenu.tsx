@@ -1,17 +1,20 @@
 import { Button } from "@chakra-ui/react";
 import CheckAndAddResources from "./CheckAndAddResources";
 import { User } from "../types/User";
+import { Recommendation } from "./RecommendationBoard";
 
 interface UserMenuProps {
     currentUser: User;
     studyView: boolean;
     setStudyView: (b: boolean) => void;
+    setRecommendationList: (r: Recommendation[]) => void;
 }
 
 export default function UserMenu({
     currentUser,
     studyView,
     setStudyView,
+    setRecommendationList,
 }: UserMenuProps): JSX.Element {
     return (
         <>
@@ -25,7 +28,10 @@ export default function UserMenu({
                     To Home View
                 </Button>
             )}
-            <CheckAndAddResources currentUser={currentUser} />
+            <CheckAndAddResources
+                currentUser={currentUser}
+                setRecommendationList={setRecommendationList}
+            />
         </>
     );
 }

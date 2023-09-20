@@ -58,16 +58,19 @@ export default function RecommendationBoard({
                         currentUser={currentUser}
                         studyView={studyView}
                         setStudyView={setStudyView}
+                        setRecommendationList={setRecommendationList}
                     />
                 )}
-                <SearchBar
-                    searchedPhrase={searchedPhrase}
-                    setSearchedPhrase={setSearchedPhrase}
-                    setRecommendationList={setRecommendationList}
-                    searchTags={searchTags}
-                    setSearchTags={setSearchTags}
-                    currentUser={currentUser}
-                />
+                {!studyView && (
+                    <SearchBar
+                        searchedPhrase={searchedPhrase}
+                        setSearchedPhrase={setSearchedPhrase}
+                        setRecommendationList={setRecommendationList}
+                        searchTags={searchTags}
+                        setSearchTags={setSearchTags}
+                        currentUser={currentUser}
+                    />
+                )}
             </HStack>
             <div style={{ display: "flex", flexDirection: "row" }}>
                 <SimpleGrid spacing="10px" width="70%" columns={3}>
