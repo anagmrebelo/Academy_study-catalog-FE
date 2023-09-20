@@ -66,6 +66,7 @@ export default function RecommendationBoard({
                     {recommendationList.map((r) => (
                         <Box key={r.url}>
                             <RecommendationCard
+                                setRecommendationList={setRecommendationList}
                                 oneRecommendation={r}
                                 currentUser={currentUser}
                             />

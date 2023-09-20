@@ -15,11 +15,15 @@ import { User } from "../types/User";
 interface RecommendationCardProps {
     currentUser: User | undefined;
     oneRecommendation: Recommendation;
+    setRecommendationList: React.Dispatch<
+        React.SetStateAction<Recommendation[]>
+    >;
 }
 
 export default function RecommendationCard({
     currentUser,
     oneRecommendation,
+    setRecommendationList,
 }: RecommendationCardProps): JSX.Element {
     return (
         <>
@@ -55,6 +59,7 @@ export default function RecommendationCard({
                     <VotingArea
                         currentUser={currentUser}
                         oneRecommendation={oneRecommendation}
+                        setRecommendationList={setRecommendationList}
                     />
                 </CardBody>
             </Card>

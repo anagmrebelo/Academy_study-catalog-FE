@@ -9,41 +9,83 @@ import { baseURL } from "./App";
 interface VotingAreaProps {
     currentUser: User | undefined;
     oneRecommendation: Recommendation;
+    setRecommendationList: React.Dispatch<
+        React.SetStateAction<Recommendation[]>
+    >;
 }
 
 export default function VotingArea({
     currentUser,
     oneRecommendation,
+    setRecommendationList,
 }: VotingAreaProps): JSX.Element {
     const [voteState, setVoteState] = useState<boolean | undefined>(undefined);
+    const encodedUrl = encodeURIComponent(oneRecommendation.url);
 
-    // { user_id, url, is_like }
+    const deleteVote = async () => {
+        try {
+            await axios.delete(
+                `${baseURL}/votes/${currentUser?.id}/${encodedUrl}`
+            );
+        } catch (error) {
+            console.error(
+                "Handle error from the handle vote function - delete vote:",
+                error
+            );
+        }
+    };
+
+    const postVote = async (newVote: boolean) => {
+        try {
+            await axios.post(`${baseURL}/votes`, {
+                is_like: newVote,
+                url: oneRecommendation.url,
+                user_id: currentUser?.id,
+            });
+        } catch (error) {
+            console.error(
+                "Handle error from the handle vote function - post vote:",
+                error
+            );
+        }
+    };
+
+    const updateVoteCount = async () => {
+        try {
+            const response = await axios.get(`${baseURL}/votes/${encodedUrl}`);
+            const { newLikeCount, newDislikeCount } = response.data;
+            setRecommendationList((prev) =>
+                prev.map((r) => {
+                    if (r.url === oneRecommendation.url) {
+                        const updatedRecommendation = { ...oneRecommendation };
+                        updatedRecommendation.like_count = newLikeCount;
+                        updatedRecommendation.dislike_count = newDislikeCount;
+
+                        return updatedRecommendation;
+                    }
+                    return r;
+                })
+            );
+        } catch (error) {
+            console.error(
+                "Handle error from the handle vote function - update vote count:",
+                error
+            );
+        }
+    };
+
     const handleVote = async (value: boolean) => {
         const newVote = value === voteState ? undefined : value;
         setVoteState(newVote);
 
-        // // WIP
-        // if (newVote === undefined) {
-        //     try {
-        //         await axios.delete(baseURL + "/votes", {
-        //             data: {
-        //                 url: oneRecommendation.url,
-        //                 user_id: currentUser?.id,
-        //             },
-        //         });
-        //     } catch (error) {
-        //         console.error(
-        //             "Handle error from the handle vote function:",
-        //             error
-        //         );
-        //     }
-        // }
-        // true => post request /votes {is_like: true, url: oneRecommendation.url, user_id: current_user.user_id }
-        // false => post request /votes {is_like: false, url: oneRecommendation.url, user_id: current_user.user_id }
-        // undefined => post request /votes {url: oneRecommendation.url, user_id: current_user.user_id }
-    };
+        if (newVote === undefined) {
+            await deleteVote();
+        } else {
+            await postVote(newVote);
+        }
 
-    //   delete /votes/id/www.google.com/3
+        await updateVoteCount();
+    };
 
     const setVoteBorder = (value: boolean) => {
         return value === voteState ? "2px solid black" : "";
@@ -78,5 +120,3 @@ export default function VotingArea({
         </>
     );
 }
-
-//border="2px solid black"
