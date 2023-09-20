@@ -1,5 +1,5 @@
 import { Stack, Badge } from "@chakra-ui/react";
-import { Recommendation } from "./RecommendationBoard";
+import { Recommendation } from "../RecommendationBoard";
 
 interface TagsAreaProps {
     oneRecommendation: Recommendation;

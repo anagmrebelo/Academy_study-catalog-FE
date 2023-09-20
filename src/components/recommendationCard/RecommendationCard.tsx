@@ -7,10 +7,10 @@ import {
     Link,
     Stack,
 } from "@chakra-ui/react";
-import { Recommendation } from "./RecommendationBoard";
+import { Recommendation } from "../RecommendationBoard";
 import VotingArea from "./VotingArea";
 import TagsArea from "./TagsArea";
-import { User } from "../types/User";
+import { User } from "../../types/User";
 
 interface RecommendationCardProps {
     currentUser: User | undefined;

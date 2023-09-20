@@ -1,5 +1,5 @@
 import { Box, Container, HStack, SimpleGrid } from "@chakra-ui/react";
-import RecommendationCard from "./RecommendationCard";
+import RecommendationCard from "./recommendationCard/RecommendationCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL } from "./App";
