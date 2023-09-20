@@ -1,17 +1,9 @@
-import {
-    Badge,
-    Card,
-    CardBody,
-    Heading,
-    Image,
-    Link,
-    Stack,
-} from "@chakra-ui/react";
-import { Recommendation } from "../RecommendationBoard";
-import VotingArea from "./VotingArea";
-import TagsArea from "./TagsArea";
+import { Card, CardBody, Heading, Image, Link, Stack } from "@chakra-ui/react";
 import { User } from "../../types/User";
+import { Recommendation } from "../RecommendationBoard";
 import ReasonArea from "./ReasonArea";
+import TagsArea from "./TagsArea";
+import VotingArea from "./VotingArea";
 
 interface RecommendationCardProps {
     currentUser: User | undefined;
