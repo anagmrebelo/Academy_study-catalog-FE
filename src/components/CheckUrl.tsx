@@ -1,31 +1,43 @@
 import {
-    useDisclosure,
-    Button,
     Modal,
     ModalOverlay,
     ModalContent,
     ModalHeader,
     ModalCloseButton,
     ModalBody,
-    ModalFooter,
     Input,
+    ModalFooter,
+    Button,
     Alert,
-    AlertDescription,
     AlertIcon,
     AlertTitle,
+    AlertDescription,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { baseURL } from "./App";
 import { useState } from "react";
+import { baseURL } from "./App";
 
-export default function AddNewResource(): JSX.Element {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const [userUrl, setUserUrl] = useState("");
+interface CheckUrlProps {
+    setRecommendationInputView: (b: boolean) => void;
+    onClose: () => void;
+    isOpen: boolean;
+    userUrl: string;
+    setUserUrl: (s: string) => void;
+    handleCancel: () => void;
+}
+
+export default function CheckUrl({
+    setRecommendationInputView,
+    onClose,
+    isOpen,
+    userUrl,
+    setUserUrl,
+    handleCancel,
+}: CheckUrlProps): JSX.Element {
     const [urlStatus, setUrlStatus] = useState<number>();
 
-    function handleCancel() {
-        onClose();
-        setUrlStatus(0);
+    function handleProceed() {
+        setRecommendationInputView(true);
     }
 
     async function handleCheckURL() {
@@ -41,7 +53,6 @@ export default function AddNewResource(): JSX.Element {
                 );
                 const responseInfo = response.status;
                 setUrlStatus(responseInfo);
-                console.log(responseInfo);
             } catch (error) {
                 console.error("this is our error", error);
             }
@@ -50,8 +61,6 @@ export default function AddNewResource(): JSX.Element {
 
     return (
         <>
-            <Button onClick={onOpen}>Add new resource</Button>
-
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
@@ -80,7 +89,9 @@ export default function AddNewResource(): JSX.Element {
                             Check URL
                         </Button>
                         {urlStatus === 201 && (
-                            <Button colorScheme="green">Proceed</Button>
+                            <Button colorScheme="green" onClick={handleProceed}>
+                                Proceed
+                            </Button>
                         )}
                     </ModalFooter>
                     {urlStatus === 202 && (
