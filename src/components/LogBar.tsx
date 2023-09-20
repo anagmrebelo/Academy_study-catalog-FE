@@ -15,7 +15,7 @@ export default function LogBar({
 }: LogBarProps): JSX.Element {
     return (
         <div>
-            <HStack justifyContent={"space-between"} p={4}>
+            <HStack justifyContent={"space-between"} p={10}>
                 {currentUser === undefined && (
                     <UsersDropdown setCurrentUser={setCurrentUser} />
                 )}

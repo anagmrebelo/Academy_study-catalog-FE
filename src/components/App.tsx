@@ -1,5 +1,6 @@
 import "./App.css";
 import Footer from "./Footer";
+import Header from "./Header";
 import MainView from "./MainView";
 
 export const baseURL = "https://c7c1-study-resource-catalog.onrender.com";
@@ -10,6 +11,7 @@ export const baseURL = "https://c7c1-study-resource-catalog.onrender.com";
 function App() {
     return (
         <div className="App">
+            <Header />
             <MainView />
             <Footer />
         </div>
