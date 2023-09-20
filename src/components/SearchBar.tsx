@@ -8,10 +8,8 @@ import {
 } from "@chakra-ui/react";
 import { ArrowLeftIcon, SearchIcon } from "@chakra-ui/icons";
 import axios from "axios";
-import {
-    Recommendation,
-    fetchRecentRecommendations,
-} from "./RecommendationBoard";
+import { Recommendation, fetchRecommendations } from "./RecommendationBoard";
+import { User } from "../types/User";
 
 interface SearchBarProps {
     searchedPhrase: string;
@@ -19,6 +17,7 @@ interface SearchBarProps {
     setRecommendationList: (arr: Recommendation[]) => void;
     searchTags: string[];
     setSearchTags: (st: string[]) => void;
+    currentUser: User | undefined;
 }
 
 export function SearchBar({
@@ -27,6 +26,7 @@ export function SearchBar({
     setRecommendationList,
     searchTags,
     setSearchTags,
+    currentUser,
 }: SearchBarProps): JSX.Element {
     async function handleSearch() {
         let editedSearchPhrase = searchedPhrase;
@@ -51,7 +51,7 @@ export function SearchBar({
     const handleReset = () => {
         setSearchTags([]);
         setSearchedPhrase("");
-        fetchRecentRecommendations(setRecommendationList);
+        fetchRecommendations(setRecommendationList, false, currentUser?.id);
     };
     return (
         <div
