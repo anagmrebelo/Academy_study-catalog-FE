@@ -11,6 +11,7 @@ import { Recommendation } from "../RecommendationBoard";
 import VotingArea from "./VotingArea";
 import TagsArea from "./TagsArea";
 import { User } from "../../types/User";
+import ReasonArea from "./ReasonArea";
 
 interface RecommendationCardProps {
     currentUser: User | undefined;
@@ -47,13 +48,7 @@ export default function RecommendationCard({
                         <Link href={oneRecommendation.url} isExternal>
                             Resource link
                         </Link>
-                        <Badge
-                            colorScheme="purple"
-                            whiteSpace="normal"
-                            noOfLines={3}
-                        >
-                            {oneRecommendation.recommendation_type}
-                        </Badge>
+                        <ReasonArea oneRecommendation={oneRecommendation} />
                         <TagsArea oneRecommendation={oneRecommendation} />
                     </Stack>
                     <VotingArea
