@@ -1,10 +1,10 @@
-import { HStack, Tag, TagLeftIcon, TagLabel } from "@chakra-ui/react";
-import { FiThumbsUp, FiThumbsDown } from "react-icons/fi";
-import { Recommendation } from "./RecommendationBoard";
-import { useState } from "react";
-import { User } from "../types/User";
+import { HStack, Tag, TagLabel, TagLeftIcon } from "@chakra-ui/react";
 import axios from "axios";
+import { useState } from "react";
+import { FiThumbsDown, FiThumbsUp } from "react-icons/fi";
+import { User } from "../types/User";
 import { baseURL } from "./App";
+import { Recommendation } from "./RecommendationBoard";
 
 interface VotingAreaProps {
     currentUser: User | undefined;
