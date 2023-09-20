@@ -1,6 +1,15 @@
-import { Card, CardBody, Heading, Image, Link, Stack } from "@chakra-ui/react";
+import {
+    Card,
+    CardBody,
+    Heading,
+    Image,
+    Link,
+    Stack,
+    useDisclosure,
+} from "@chakra-ui/react";
 import { User } from "../../types/User";
 import { Recommendation } from "../RecommendationBoard";
+import FullCardView from "./FullCardView";
 import ReasonArea from "./ReasonArea";
 import TagsArea from "./TagsArea";
 import VotingArea from "./VotingArea";
@@ -18,9 +27,12 @@ export default function RecommendationCard({
     oneRecommendation,
     setRecommendationList,
 }: RecommendationCardProps): JSX.Element {
+    // @ts-ignore
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
     return (
         <>
-            <Card>
+            <Card onClick={onOpen}>
                 <CardBody>
                     <Heading
                         data-testid="card-heading"
@@ -50,6 +62,11 @@ export default function RecommendationCard({
                     />
                 </CardBody>
             </Card>
+            <FullCardView
+                isOpen={isOpen}
+                onClose={onClose}
+                oneRecommendation={oneRecommendation}
+            />
         </>
     );
 }
