@@ -3,7 +3,7 @@ import { baseURL } from "./App";
 import { Button } from "@chakra-ui/react";
 import axios from "axios";
 
-interface TagCloudView {
+export interface TagCloudView {
     tag_name: string;
 }
 interface TagCloudProps {
@@ -37,7 +37,6 @@ export default function TagCloud({
             setSearchTags([...searchTags, tag_name]);
         }
     }
-    console.log(searchTags);
     function setColorOfButton(tag_name: string) {
         if (searchTags.includes(tag_name)) {
             return "blue";

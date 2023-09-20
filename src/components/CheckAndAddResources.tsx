@@ -3,8 +3,15 @@ import { useDisclosure, Button } from "@chakra-ui/react";
 import { useState } from "react";
 import CheckUrl from "./CheckUrl";
 import AddResouce from "./AddResource";
+import { User } from "../types/User";
 
-export default function CheckAndAddResources(): JSX.Element {
+interface CheckAndAddResourcesProps {
+    currentUser: User;
+}
+
+export default function CheckAndAddResources({
+    currentUser,
+}: CheckAndAddResourcesProps): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [userUrl, setUserUrl] = useState("");
     const [recommendationInputView, setRecommendationInputView] =
@@ -31,10 +38,13 @@ export default function CheckAndAddResources(): JSX.Element {
             )}
             {recommendationInputView && (
                 <AddResouce
+                    setRecommendationInputView={setRecommendationInputView}
                     onClose={onClose}
                     isOpen={isOpen}
                     handleCancel={handleCancel}
                     userUrl={userUrl}
+                    setUserUrl={setUserUrl}
+                    currentUser={currentUser}
                 />
             )}
         </>
