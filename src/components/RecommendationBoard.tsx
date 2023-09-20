@@ -1,39 +1,16 @@
 import { Box, Container, HStack, SimpleGrid } from "@chakra-ui/react";
-import RecommendationCard from "./recommendationCard/RecommendationCard";
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { Recommendation } from "../types/Recommendation";
+import { User } from "../types/User";
 import { baseURL } from "./App";
 import { SearchBar } from "./SearchBar";
 import TagCloud from "./TagCloud";
 import UserMenu from "./UserMenu";
-import { User } from "../types/User";
+import RecommendationCard from "./recommendationCard/RecommendationCard";
 
 interface RecommendationBoardProps {
     currentUser: User | undefined;
-}
-
-// interface UserComment {
-//     user_name: string;
-//     comment: string;
-// }
-
-export interface Recommendation {
-    url: string;
-    name: string;
-    author: string;
-    description: string;
-    content_type: string;
-    build_phase: string;
-    creation_date: Date; //verify specific type for this one
-    user_id: number;
-    recommendation_type: string;
-    // | "I recommend this resource after having used it"
-    // | "I do not recommend this resource, having used it"
-    // | "I haven't used this resource but it looks promising";
-    reason: string;
-    like_count: number;
-    dislike_count: number;
-    tags: string;
 }
 
 export default function RecommendationBoard({

@@ -8,10 +8,8 @@ import {
 } from "@chakra-ui/react";
 import { ArrowLeftIcon, SearchIcon } from "@chakra-ui/icons";
 import axios from "axios";
-import {
-    Recommendation,
-    fetchRecentRecommendations,
-} from "./RecommendationBoard";
+import { fetchRecentRecommendations } from "./RecommendationBoard";
+import { Recommendation } from "../types/Recommendation";
 
 interface SearchBarProps {
     searchedPhrase: string;

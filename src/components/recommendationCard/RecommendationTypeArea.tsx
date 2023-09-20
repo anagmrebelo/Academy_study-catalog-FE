@@ -1,11 +1,11 @@
 import { Badge } from "@chakra-ui/react";
-import { Recommendation } from "../RecommendationBoard";
+import { Recommendation } from "../../types/Recommendation";
 
 interface ReasonAreaProps {
     oneRecommendation: Recommendation;
 }
 
-export default function ReasonArea({
+export default function RecommendationTypeArea({
     oneRecommendation,
 }: ReasonAreaProps): JSX.Element {
     return (

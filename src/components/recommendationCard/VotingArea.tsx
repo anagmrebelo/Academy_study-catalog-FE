@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FiThumbsDown, FiThumbsUp } from "react-icons/fi";
 import { User } from "../../types/User";
 import { baseURL } from "../App";
-import { Recommendation } from "../RecommendationBoard";
+import { Recommendation } from "../../types/Recommendation";
 
 interface VotingAreaProps {
     currentUser: User | undefined;

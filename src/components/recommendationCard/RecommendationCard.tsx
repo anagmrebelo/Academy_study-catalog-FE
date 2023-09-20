@@ -7,10 +7,10 @@ import {
     Stack,
     useDisclosure,
 } from "@chakra-ui/react";
+import { Recommendation } from "../../types/Recommendation";
 import { User } from "../../types/User";
-import { Recommendation } from "../RecommendationBoard";
-import FullCardView from "./FullCardView";
-import ReasonArea from "./ReasonArea";
+import FullCardView from "../fullCardView/FullCardView";
+import RecommendationTypeArea from "./RecommendationTypeArea";
 import TagsArea from "./TagsArea";
 import VotingArea from "./VotingArea";
 
@@ -27,12 +27,11 @@ export default function RecommendationCard({
     oneRecommendation,
     setRecommendationList,
 }: RecommendationCardProps): JSX.Element {
-    // @ts-ignore
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
         <>
-            <Card onClick={onOpen}>
+            <Card>
                 <CardBody>
                     <Heading
                         data-testid="card-heading"
@@ -47,12 +46,15 @@ export default function RecommendationCard({
                         src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
                         alt="Green double couch with wooden legs"
                         borderRadius="lg"
+                        onClick={onOpen}
                     />
                     <Stack p={4}>
                         <Link href={oneRecommendation.url} isExternal>
                             Resource link
                         </Link>
-                        <ReasonArea oneRecommendation={oneRecommendation} />
+                        <RecommendationTypeArea
+                            oneRecommendation={oneRecommendation}
+                        />
                         <TagsArea oneRecommendation={oneRecommendation} />
                     </Stack>
                     <VotingArea
@@ -66,6 +68,7 @@ export default function RecommendationCard({
                 isOpen={isOpen}
                 onClose={onClose}
                 oneRecommendation={oneRecommendation}
+                currentUser={currentUser}
             />
         </>
     );
