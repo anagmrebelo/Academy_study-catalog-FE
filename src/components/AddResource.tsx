@@ -19,7 +19,8 @@ import { useCallback, useEffect, useState } from "react";
 import { baseURL } from "./App";
 import { TagCloudView } from "./TagCloud";
 import { User } from "../types/User";
-import { Recommendation, fetchRecommendations } from "./RecommendationBoard";
+import { fetchRecommendations } from "./RecommendationBoard";
+import { Recommendation } from "../types/Recommendation";
 
 interface AddResourceUrlProps {
     setRecommendationInputView: (b: boolean) => void;

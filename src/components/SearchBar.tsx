@@ -1,16 +1,15 @@
 import { baseURL } from "./App";
-
+import { ArrowLeftIcon, SearchIcon } from "@chakra-ui/icons";
 import {
+    IconButton,
     Input,
     InputGroup,
     InputLeftElement,
-    IconButton,
 } from "@chakra-ui/react";
-import { ArrowLeftIcon, SearchIcon } from "@chakra-ui/icons";
 import axios from "axios";
-import { fetchRecentRecommendations } from "./RecommendationBoard";
 import { Recommendation } from "../types/Recommendation";
 import { User } from "../types/User";
+import { fetchRecommendations } from "./RecommendationBoard";
 
 interface SearchBarProps {
     searchedPhrase: string;

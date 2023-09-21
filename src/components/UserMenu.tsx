@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import CheckAndAddResources from "./CheckAndAddResources";
 import { User } from "../types/User";
-import { Recommendation } from "./RecommendationBoard";
+import { Recommendation } from "../types/Recommendation";
 
 interface UserMenuProps {
     currentUser: User;

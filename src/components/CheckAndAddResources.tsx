@@ -4,7 +4,7 @@ import { useState } from "react";
 import CheckUrl from "./CheckUrl";
 import AddResouce from "./AddResource";
 import { User } from "../types/User";
-import { Recommendation } from "./RecommendationBoard";
+import { Recommendation } from "../types/Recommendation";
 
 interface CheckAndAddResourcesProps {
     currentUser: User;

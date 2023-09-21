@@ -2,7 +2,7 @@ import { Checkbox } from "@chakra-ui/react";
 import { User } from "../../types/User";
 import axios from "axios";
 import { baseURL } from "../App";
-import { Recommendation } from "../RecommendationBoard";
+import { Recommendation } from "../../types/Recommendation";
 
 interface CheckboxAreaProps {
     currentUser: User | undefined;
