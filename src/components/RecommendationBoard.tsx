@@ -21,24 +21,33 @@ export default function RecommendationBoard({
     >([]);
     const [searchedPhrase, setSearchedPhrase] = useState("");
     const [searchTags, setSearchTags] = useState<string[]>([]);
+    const [studyView, setStudyView] = useState<boolean>(false);
 
     useEffect(() => {
-        fetchRecentRecommendations(setRecommendationList);
-    }, []);
+        fetchRecommendations(setRecommendationList, studyView, currentUser?.id);
+    }, [studyView, currentUser?.id]);
 
     return (
         <>
             <HStack>
                 {currentUser !== undefined && (
-                    <UserMenu currentUser={currentUser} />
+                    <UserMenu
+                        currentUser={currentUser}
+                        studyView={studyView}
+                        setStudyView={setStudyView}
+                        setRecommendationList={setRecommendationList}
+                    />
                 )}
-                <SearchBar
-                    searchedPhrase={searchedPhrase}
-                    setSearchedPhrase={setSearchedPhrase}
-                    setRecommendationList={setRecommendationList}
-                    searchTags={searchTags}
-                    setSearchTags={setSearchTags}
-                />
+                {!studyView && (
+                    <SearchBar
+                        searchedPhrase={searchedPhrase}
+                        setSearchedPhrase={setSearchedPhrase}
+                        setRecommendationList={setRecommendationList}
+                        searchTags={searchTags}
+                        setSearchTags={setSearchTags}
+                        currentUser={currentUser}
+                    />
+                )}
             </HStack>
             <div style={{ display: "flex", flexDirection: "row" }}>
                 <SimpleGrid spacing="10px" width="70%" columns={3}>
@@ -52,6 +61,7 @@ export default function RecommendationBoard({
                         </Box>
                     ))}
                 </SimpleGrid>
+
                 <Container width={"30%"}>
                     <TagCloud
                         searchTags={searchTags}
@@ -63,11 +73,19 @@ export default function RecommendationBoard({
     );
 }
 
-export async function fetchRecentRecommendations(
-    setRecommendationList: (rec: Recommendation[]) => void
+export async function fetchRecommendations(
+    setRecommendationList: (rec: Recommendation[]) => void,
+    studyView: boolean,
+    user_id: number | undefined
 ) {
+    let endpoint = "";
+    if (studyView && user_id) {
+        endpoint = "/study-list/" + user_id.toString();
+    } else {
+        endpoint = "/recommendation/recent10";
+    }
     try {
-        const response = await axios.get(`${baseURL}/recommendation/recent10`);
+        const response = await axios.get(`${baseURL}${endpoint}`);
         const responseList = response.data;
         setRecommendationList(responseList);
     } catch (error) {

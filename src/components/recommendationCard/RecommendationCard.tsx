@@ -13,6 +13,7 @@ import FullCardView from "../fullCardView/FullCardView";
 import RecommendationTypeArea from "./RecommendationTypeArea";
 import TagsArea from "./TagsArea";
 import VotingArea from "./VotingArea";
+import { CheckboxArea } from "./CheckboxArea";
 
 interface RecommendationCardProps {
     currentUser: User | undefined;
@@ -48,7 +49,7 @@ export default function RecommendationCard({
                         borderRadius="lg"
                         onClick={onOpen}
                     />
-                    <Stack p={4}>
+                    <Stack p={5}>
                         <Link href={oneRecommendation.url} isExternal>
                             Resource link
                         </Link>
@@ -56,6 +57,10 @@ export default function RecommendationCard({
                             oneRecommendation={oneRecommendation}
                         />
                         <TagsArea oneRecommendation={oneRecommendation} />
+                        <CheckboxArea
+                            currentUser={currentUser}
+                            oneRecommendation={oneRecommendation}
+                        />
                     </Stack>
                     <VotingArea
                         currentUser={currentUser}

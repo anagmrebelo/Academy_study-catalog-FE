@@ -19,6 +19,7 @@ import { useCallback, useEffect, useState } from "react";
 import { baseURL } from "./App";
 import { TagCloudView } from "./TagCloud";
 import { User } from "../types/User";
+import { Recommendation, fetchRecommendations } from "./RecommendationBoard";
 
 interface AddResourceUrlProps {
     setRecommendationInputView: (b: boolean) => void;
@@ -28,6 +29,7 @@ interface AddResourceUrlProps {
     userUrl: string;
     setUserUrl: (st: string) => void;
     currentUser: User;
+    setRecommendationList: (r: Recommendation[]) => void;
 }
 
 export default function AddResouce({
@@ -38,6 +40,7 @@ export default function AddResouce({
     userUrl,
     setUserUrl,
     currentUser,
+    setRecommendationList,
 }: AddResourceUrlProps): JSX.Element {
     const [formData, setFormData] = useState({
         name: "",
@@ -70,30 +73,39 @@ export default function AddResouce({
             user_id: currentUser.id,
             ...formData,
         };
-        console.log(dataToSend);
-        try {
-            const response = await axios.post(baseURL + "/recommendation", {
-                recommendation: dataToSend,
-            });
-
-            if (response.status === 200) {
-                setFormData({
-                    name: "",
-                    author: "",
-                    description: "",
-                    tags: "",
-                    content_type: "",
-                    build_phase: "",
-                    recommendation_type: "",
-                    reason: "",
-                });
-                setUserUrl("");
-                setRecommendationInputView(false);
-                onClose();
-            }
-        } catch (error) {
+        if (Object.values(dataToSend).includes("")) {
             alert("Failed to submit. Make sure all fields are completed.");
-            console.error("Error:", error);
+        } else {
+            try {
+                const response = await axios.post(baseURL + "/recommendation", {
+                    recommendation: dataToSend,
+                });
+
+                if (response.status === 200) {
+                    setFormData({
+                        name: "",
+                        author: "",
+                        description: "",
+                        tags: "",
+                        content_type: "",
+                        build_phase: "",
+                        recommendation_type: "",
+                        reason: "",
+                    });
+                    setUserUrl("");
+                    setRecommendationInputView(false);
+                    fetchRecommendations(
+                        setRecommendationList,
+                        false,
+                        currentUser.id
+                    );
+
+                    onClose();
+                }
+            } catch (error) {
+                alert("Failed to submit. Make sure all fields are completed.");
+                console.error("Error:", error);
+            }
         }
     }
     return (
