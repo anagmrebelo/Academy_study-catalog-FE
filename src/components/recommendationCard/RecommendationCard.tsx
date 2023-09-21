@@ -1,4 +1,12 @@
-import { Card, CardBody, Heading, Image, Link, Stack } from "@chakra-ui/react";
+import {
+    Card,
+    CardBody,
+    HStack,
+    Heading,
+    Image,
+    Link,
+    Stack,
+} from "@chakra-ui/react";
 import { User } from "../../types/User";
 import { Recommendation } from "../RecommendationBoard";
 import ReasonArea from "./ReasonArea";
@@ -21,7 +29,7 @@ export default function RecommendationCard({
 }: RecommendationCardProps): JSX.Element {
     return (
         <>
-            <Card>
+            <Card height={"100%"}>
                 <CardBody>
                     <Heading
                         data-testid="card-heading"
@@ -43,16 +51,18 @@ export default function RecommendationCard({
                         </Link>
                         <ReasonArea oneRecommendation={oneRecommendation} />
                         <TagsArea oneRecommendation={oneRecommendation} />
+                    </Stack>
+                    <HStack justifyContent={"space-between"} pr={5} pl={5}>
                         <CheckboxArea
                             currentUser={currentUser}
                             oneRecommendation={oneRecommendation}
                         />
-                    </Stack>
-                    <VotingArea
-                        currentUser={currentUser}
-                        oneRecommendation={oneRecommendation}
-                        setRecommendationList={setRecommendationList}
-                    />
+                        <VotingArea
+                            currentUser={currentUser}
+                            oneRecommendation={oneRecommendation}
+                            setRecommendationList={setRecommendationList}
+                        />
+                    </HStack>
                 </CardBody>
             </Card>
         </>
