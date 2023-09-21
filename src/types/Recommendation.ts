@@ -15,4 +15,5 @@ export interface Recommendation {
     like_count: number;
     dislike_count: number;
     tags: string;
+    thumbnail_url: string;
 }
