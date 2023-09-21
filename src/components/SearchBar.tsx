@@ -5,6 +5,7 @@ import {
     InputGroup,
     InputLeftElement,
     IconButton,
+    Stack,
 } from "@chakra-ui/react";
 import { ArrowLeftIcon, SearchIcon } from "@chakra-ui/icons";
 import axios from "axios";
@@ -54,45 +55,37 @@ export function SearchBar({
         fetchRecommendations(setRecommendationList, false, currentUser?.id);
     };
     return (
-        <div
-            style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
-            <div style={{ width: "70%" }}>
-                <InputGroup size="md" margin={"0.5rem"}>
-                    <InputLeftElement
-                        width="4.5rem"
-                        gap={"0.5rem"}
-                        marginLeft={"0.5rem"}
-                    >
-                        <IconButton
-                            h="1.75rem"
-                            size="sm"
-                            colorScheme="orange"
-                            aria-label="Reset search"
-                            icon={<ArrowLeftIcon />}
-                            onClick={handleReset}
-                        />
-                        <IconButton
-                            h="1.75rem"
-                            size="sm"
-                            colorScheme="blue"
-                            aria-label="Search database"
-                            icon={<SearchIcon />}
-                            onClick={handleSearch}
-                        />
-                    </InputLeftElement>
-                    <Input
-                        paddingLeft={"100px"}
-                        placeholder="Search for a recommendation..."
-                        value={searchedPhrase}
-                        onChange={(e) => setSearchedPhrase(e.target.value)}
+        <Stack minWidth={"45vw"}>
+            <InputGroup size="md">
+                <InputLeftElement
+                    width="4.5rem"
+                    gap={"0.5rem"}
+                    marginLeft={"0.5rem"}
+                >
+                    <IconButton
+                        h="1.75rem"
+                        size="sm"
+                        colorScheme="orange"
+                        aria-label="Reset search"
+                        icon={<ArrowLeftIcon />}
+                        onClick={handleReset}
                     />
-                </InputGroup>
-            </div>
-        </div>
+                    <IconButton
+                        h="1.75rem"
+                        size="sm"
+                        colorScheme="blue"
+                        aria-label="Search database"
+                        icon={<SearchIcon />}
+                        onClick={handleSearch}
+                    />
+                </InputLeftElement>
+                <Input
+                    paddingLeft={"100px"}
+                    placeholder="Search for a recommendation..."
+                    value={searchedPhrase}
+                    onChange={(e) => setSearchedPhrase(e.target.value)}
+                />
+            </InputGroup>
+        </Stack>
     );
 }
