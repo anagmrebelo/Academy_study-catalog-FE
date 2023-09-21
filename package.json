@@ -10,9 +10,9 @@
         "format:check": "prettier --check .",
         "lint": "eslint --max-warnings=0 .",
         "preview": "vite preview",
-        "test": "vitest --no-watch --reporter verbose",
-        "test:watch": "vitest --reporter verbose",
-        "test:gui": "vitest --ui",
+        "test": "vitest --no-watch --reporter verbose --passWithNoTests",
+        "test:watch": "vitest --reporter verbose --passWithNoTests",
+        "test:gui": "vitest --ui --passWithNoTests",
         "type-check": "tsc --noEmit",
         "check-all": "yarn type-check && yarn lint && yarn format && yarn test && yarn cypress run"
     },
