@@ -15,24 +15,22 @@ export default function LogBar({
 }: LogBarProps): JSX.Element {
     return (
         <div>
-            <HStack justifyContent={"space-between"} p={10}>
-                {currentUser === undefined && (
-                    <UsersDropdown setCurrentUser={setCurrentUser} />
-                )}
-                {currentUser !== undefined && (
-                    <>
-                        <h3 data-testid="logged-in-user">
-                            Logged in as {currentUser.user_name}
-                        </h3>
-                        <Button
-                            onClick={() => setCurrentUser(undefined)}
-                            data-testid="logout-btn"
-                        >
-                            Logout
-                        </Button>
-                    </>
-                )}
-            </HStack>
+            {currentUser === undefined && (
+                <UsersDropdown setCurrentUser={setCurrentUser} />
+            )}
+            {currentUser !== undefined && (
+                <HStack justifyContent={"space-between"} pr={10} pl={10}>
+                    <h3 data-testid="logged-in-user">
+                        Logged in as {currentUser.user_name}
+                    </h3>
+                    <Button
+                        onClick={() => setCurrentUser(undefined)}
+                        data-testid="logout-btn"
+                    >
+                        Logout
+                    </Button>
+                </HStack>
+            )}
         </div>
     );
 }

@@ -1,19 +1,20 @@
 import {
     Card,
     CardBody,
+    HStack,
     Heading,
     Image,
     Link,
     Stack,
     useDisclosure,
 } from "@chakra-ui/react";
-import { Recommendation } from "../../types/Recommendation";
 import { User } from "../../types/User";
 import FullCardView from "../fullCardView/FullCardView";
 import RecommendationTypeArea from "./RecommendationTypeArea";
 import TagsArea from "./TagsArea";
 import VotingArea from "./VotingArea";
 import { CheckboxArea } from "./CheckboxArea";
+import { Recommendation } from "../../types/Recommendation";
 
 interface RecommendationCardProps {
     currentUser: User | undefined;
@@ -32,7 +33,7 @@ export default function RecommendationCard({
 
     return (
         <>
-            <Card>
+            <Card height={"100%"}>
                 <CardBody>
                     <Heading
                         data-testid="card-heading"
@@ -57,16 +58,18 @@ export default function RecommendationCard({
                             oneRecommendation={oneRecommendation}
                         />
                         <TagsArea oneRecommendation={oneRecommendation} />
+                    </Stack>
+                    <HStack justifyContent={"space-between"} pr={5} pl={5}>
                         <CheckboxArea
                             currentUser={currentUser}
                             oneRecommendation={oneRecommendation}
                         />
-                    </Stack>
-                    <VotingArea
-                        currentUser={currentUser}
-                        oneRecommendation={oneRecommendation}
-                        setRecommendationList={setRecommendationList}
-                    />
+                        <VotingArea
+                            currentUser={currentUser}
+                            oneRecommendation={oneRecommendation}
+                            setRecommendationList={setRecommendationList}
+                        />
+                    </HStack>
                 </CardBody>
             </Card>
             <FullCardView

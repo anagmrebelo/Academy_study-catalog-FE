@@ -1,13 +1,13 @@
-import { Box, Container, HStack, SimpleGrid } from "@chakra-ui/react";
+import { Box, Container, HStack, SimpleGrid, Stack } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Recommendation } from "../types/Recommendation";
 import { User } from "../types/User";
 import { baseURL } from "./App";
 import { SearchBar } from "./SearchBar";
 import TagCloud from "./TagCloud";
 import UserMenu from "./UserMenu";
 import RecommendationCard from "./recommendationCard/RecommendationCard";
+import { Recommendation } from "../types/Recommendation";
 
 interface RecommendationBoardProps {
     currentUser: User | undefined;
@@ -29,7 +29,7 @@ export default function RecommendationBoard({
 
     return (
         <>
-            <HStack>
+            <HStack pt={"1vh"}>
                 {currentUser !== undefined && (
                     <UserMenu
                         currentUser={currentUser}
@@ -49,8 +49,8 @@ export default function RecommendationBoard({
                     />
                 )}
             </HStack>
-            <div style={{ display: "flex", flexDirection: "row" }}>
-                <SimpleGrid spacing="10px" width="70%" columns={3}>
+            <Stack pt={"2vh"} direction="row" align="flex-start">
+                <SimpleGrid spacing="10px" minWidth="70%" columns={3}>
                     {recommendationList.map((r) => (
                         <Box key={r.url}>
                             <RecommendationCard
@@ -62,13 +62,15 @@ export default function RecommendationBoard({
                     ))}
                 </SimpleGrid>
 
-                <Container width={"30%"}>
-                    <TagCloud
-                        searchTags={searchTags}
-                        setSearchTags={setSearchTags}
-                    />
-                </Container>
-            </div>
+                {!studyView && (
+                    <Container minWidth={"30%"}>
+                        <TagCloud
+                            searchTags={searchTags}
+                            setSearchTags={setSearchTags}
+                        />
+                    </Container>
+                )}
+            </Stack>
         </>
     );
 }
