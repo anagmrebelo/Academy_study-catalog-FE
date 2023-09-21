@@ -16,11 +16,11 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
-import { baseURL } from "./App";
-import { TagCloudView } from "./TagCloud";
-import { User } from "../types/User";
-import { fetchRecommendations } from "./RecommendationBoard";
-import { Recommendation } from "../types/Recommendation";
+import { baseURL } from "../App";
+import { TagCloudView } from "../TagCloud";
+import { User } from "../../types/User";
+import { fetchRecommendations } from "../RecommendationBoard";
+import { Recommendation } from "../../types/Recommendation";
 
 interface AddResourceUrlProps {
     setRecommendationInputView: (b: boolean) => void;

@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
-import { baseURL } from "./App";
+import { baseURL } from "../App";
 
 interface CheckUrlProps {
     setRecommendationInputView: (b: boolean) => void;
