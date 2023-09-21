@@ -2,7 +2,14 @@ import { HStack, Link } from "@chakra-ui/react";
 
 export default function Footer(): JSX.Element {
     return (
-        <HStack justifyContent={"center"} p={4} gap={4}>
+        <HStack
+            justifyContent={"center"}
+            p={4}
+            gap={4}
+            position={"sticky"}
+            bottom={0}
+            bg={"white"}
+        >
             <Link
                 href="https://github.com/Julieta-Sanguedolce/C7C1-frontend"
                 isExternal
