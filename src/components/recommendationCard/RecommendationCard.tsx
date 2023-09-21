@@ -49,6 +49,9 @@ export default function RecommendationCard({
                         alt="Image not found"
                         borderRadius="lg"
                         onClick={onOpen}
+                        height={currentUser ? "50%" : "60%"}
+                        width={"100%"}
+                        objectFit={"cover"}
                     />
                     <Stack p={5}>
                         <Link href={oneRecommendation.url} isExternal>
