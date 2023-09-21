@@ -1,20 +1,19 @@
 import {
     Card,
     CardBody,
-    HStack,
     Heading,
     Image,
     Link,
     Stack,
     useDisclosure,
 } from "@chakra-ui/react";
+import { Recommendation } from "../../types/Recommendation";
 import { User } from "../../types/User";
 import FullCardView from "../fullCardView/FullCardView";
+import { CheckboxArea } from "./CheckboxArea";
 import RecommendationTypeArea from "./RecommendationTypeArea";
 import TagsArea from "./TagsArea";
 import VotingArea from "./VotingArea";
-import { CheckboxArea } from "./CheckboxArea";
-import { Recommendation } from "../../types/Recommendation";
 
 interface RecommendationCardProps {
     currentUser: User | undefined;
@@ -33,7 +32,7 @@ export default function RecommendationCard({
 
     return (
         <>
-            <Card height={"100%"}>
+            <Card m={5} height={"100%"}>
                 <CardBody>
                     <Heading
                         data-testid="card-heading"
@@ -53,7 +52,7 @@ export default function RecommendationCard({
                         width={"100%"}
                         objectFit={"cover"}
                     />
-                    <Stack p={5}>
+                    <Stack pt={5} pb={5}>
                         <Link href={oneRecommendation.url} isExternal>
                             Resource link
                         </Link>
@@ -62,7 +61,7 @@ export default function RecommendationCard({
                         />
                         <TagsArea oneRecommendation={oneRecommendation} />
                     </Stack>
-                    <HStack justifyContent={"space-between"} pr={5} pl={5}>
+                    <Stack>
                         <CheckboxArea
                             currentUser={currentUser}
                             oneRecommendation={oneRecommendation}
@@ -72,7 +71,7 @@ export default function RecommendationCard({
                             oneRecommendation={oneRecommendation}
                             setRecommendationList={setRecommendationList}
                         />
-                    </HStack>
+                    </Stack>
                 </CardBody>
             </Card>
             <FullCardView
