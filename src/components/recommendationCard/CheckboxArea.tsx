@@ -1,6 +1,6 @@
 import { Checkbox } from "@chakra-ui/react";
-import { User } from "../../types/User";
 import axios from "axios";
+import { User } from "../../types/User";
 import { baseURL } from "../App";
 import { Recommendation } from "../RecommendationBoard";
 
@@ -23,19 +23,18 @@ export function CheckboxArea({
         };
         if (isChecked) {
             try {
-                const response = await axios.post(
-                    baseURL + "/study-list",
-                    dataToSend
-                );
-                console.log(response);
+                await axios.post(baseURL + "/study-list", dataToSend);
             } catch (error) {
                 console.error("Error adding to study list", error);
             }
         } else {
-            const response = await axios.delete(baseURL + "/study-list", {
-                data: dataToSend,
-            });
-            console.log(response);
+            try {
+                await axios.delete(baseURL + "/study-list", {
+                    data: dataToSend,
+                });
+            } catch (error) {
+                console.error("Error deleting from study list", error);
+            }
         }
     }
     return (
