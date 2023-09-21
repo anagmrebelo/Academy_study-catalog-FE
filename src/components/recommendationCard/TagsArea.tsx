@@ -15,7 +15,13 @@ export default function TagsArea({
     return (
         <Stack direction="row" height={"1.5rem"} noOfLines={1}>
             {tagList.map((t) => (
-                <Badge key={t} borderRadius="full" px="2" colorScheme="teal">
+                <Badge
+                    key={t}
+                    borderRadius="full"
+                    px="2"
+                    colorScheme="teal"
+                    mr={1}
+                >
                     {t}
                 </Badge>
             ))}
