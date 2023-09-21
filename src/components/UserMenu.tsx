@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 import CheckAndAddResources from "./CheckAndAddResources";
 import { User } from "../types/User";
 import { Recommendation } from "./RecommendationBoard";
@@ -17,7 +17,7 @@ export default function UserMenu({
     setRecommendationList,
 }: UserMenuProps): JSX.Element {
     return (
-        <>
+        <ButtonGroup gap={"0.5vw"}>
             {!studyView && (
                 <Button onClick={() => setStudyView(true)}>
                     My Study View
@@ -32,6 +32,6 @@ export default function UserMenu({
                 currentUser={currentUser}
                 setRecommendationList={setRecommendationList}
             />
-        </>
+        </ButtonGroup>
     );
 }
