@@ -32,27 +32,27 @@ export default function RecommendationCard({
 
     return (
         <>
-            <Card m={5} height={"100%"}>
+            <Card height={"100%"}>
                 <CardBody>
-                    <Heading
-                        data-testid="card-heading"
-                        size="md"
-                        textTransform="uppercase"
-                        textAlign={"center"}
-                        noOfLines={1}
-                    >
-                        {oneRecommendation.name}
-                    </Heading>
-                    <Image
-                        src={oneRecommendation.thumbnail_url}
-                        alt="Image not found"
-                        borderRadius="lg"
-                        onClick={onOpen}
-                        height={currentUser ? "50%" : "60%"}
-                        width={"100%"}
-                        objectFit={"cover"}
-                    />
-                    <Stack pt={5} pb={5}>
+                    <Stack spacing={2}>
+                        <Heading
+                            data-testid="card-heading"
+                            size="md"
+                            textTransform="uppercase"
+                            textAlign={"center"}
+                            noOfLines={1}
+                        >
+                            {oneRecommendation.name}
+                        </Heading>
+                        <Image
+                            src={oneRecommendation.thumbnail_url}
+                            alt="Image not found"
+                            borderRadius="lg"
+                            onClick={onOpen}
+                            width={"100%"}
+                            objectFit={"cover"}
+                            height={"25vh"}
+                        />
                         <Link href={oneRecommendation.url} isExternal>
                             Resource link
                         </Link>
@@ -60,8 +60,6 @@ export default function RecommendationCard({
                             oneRecommendation={oneRecommendation}
                         />
                         <TagsArea oneRecommendation={oneRecommendation} />
-                    </Stack>
-                    <Stack>
                         <CheckboxArea
                             currentUser={currentUser}
                             oneRecommendation={oneRecommendation}
