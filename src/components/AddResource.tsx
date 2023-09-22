@@ -171,9 +171,9 @@ export default function AddResouce({
                                 }
                             />
 
-                            <FormLabel>Tags (comma-separated):</FormLabel>
+                            <FormLabel>Tag:</FormLabel>
                             <Select
-                                placeholder="Select tag"
+                                defaultValue={-1}
                                 name="tag"
                                 marginBottom={"0.5rem"}
                                 value={formData.tags}
@@ -184,6 +184,9 @@ export default function AddResouce({
                                     })
                                 }
                             >
+                                <option value={-1} hidden>
+                                    Select tag
+                                </option>
                                 {listOfTags.map((tag) => (
                                     <option
                                         value={tag.tag_name}
@@ -224,7 +227,7 @@ export default function AddResouce({
 
                             <FormLabel>Recommendation Type:</FormLabel>
                             <Select
-                                placeholder="Select recommendation type"
+                                defaultValue={-1}
                                 name="recommendation_type"
                                 marginBottom={"0.5rem"}
                                 value={formData.recommendation_type}
@@ -235,6 +238,9 @@ export default function AddResouce({
                                     })
                                 }
                             >
+                                <option value={-1} hidden>
+                                    Select recommendation type
+                                </option>
                                 <option value="I recommend this resource after having used it">
                                     I recommend this resource after having used
                                     it
