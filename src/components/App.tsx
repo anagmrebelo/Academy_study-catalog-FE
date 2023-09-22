@@ -5,6 +5,7 @@ import Header from "./Header";
 import MainView from "./MainView";
 import axios from "axios";
 import Loading from "./Loading";
+import { Stack } from "@chakra-ui/react";
 
 export const baseURL = "https://c7c1-study-resource-catalog.onrender.com";
 // process.env.NODE_ENV === "production"
@@ -28,8 +29,10 @@ function App() {
                 <Loading />
             ) : (
                 <>
-                    <Header />
-                    <MainView />
+                    <Stack minHeight={"100vh"}>
+                        <Header />
+                        <MainView />
+                    </Stack>
                     <Footer />
                 </>
             )}
