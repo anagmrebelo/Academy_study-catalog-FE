@@ -36,7 +36,7 @@ export default function AddComment({
         });
         try {
             await axios.post(`${baseURL}/comments`, {
-                recommendation_url: oneRecommendation.url,
+                url: oneRecommendation.url,
                 text: commentInput,
                 user_id: currentUser?.id,
             });
