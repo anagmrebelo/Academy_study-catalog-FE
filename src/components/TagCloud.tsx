@@ -43,9 +43,11 @@ export default function TagCloud({
         }
     }
     return (
-        <div>
+        <div data-testid="tag-cloud-area">
+            
             {listOfTags.map((t) => (
                 <Button
+                    data-testid="tag-cloud-button"
                     key={t.tag_name}
                     margin={"3px"}
                     onClick={() => handleClickOnTag(t.tag_name)}
