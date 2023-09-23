@@ -3,8 +3,8 @@ import { useDisclosure, Button } from "@chakra-ui/react";
 import { useState } from "react";
 import CheckUrl from "./CheckUrl";
 import AddResouce from "./AddResource";
-import { User } from "../types/User";
-import { Recommendation } from "../types/Recommendation";
+import { User } from "../../types/User";
+import { Recommendation } from "../../types/Recommendation";
 
 interface CheckAndAddResourcesProps {
     currentUser: User;

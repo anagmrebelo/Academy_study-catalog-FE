@@ -1,5 +1,5 @@
 import { Button, ButtonGroup } from "@chakra-ui/react";
-import CheckAndAddResources from "./CheckAndAddResources";
+import CheckAndAddResources from "./addResource/CheckAndAddResources";
 import { User } from "../types/User";
 import { Recommendation } from "../types/Recommendation";
 

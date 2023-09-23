@@ -1,20 +1,19 @@
 import {
     Card,
     CardBody,
-    HStack,
     Heading,
     Image,
     Link,
     Stack,
     useDisclosure,
 } from "@chakra-ui/react";
+import { Recommendation } from "../../types/Recommendation";
 import { User } from "../../types/User";
 import FullCardView from "../fullCardView/FullCardView";
+import { CheckboxArea } from "./CheckboxArea";
 import RecommendationTypeArea from "./RecommendationTypeArea";
 import TagsArea from "./TagsArea";
 import VotingArea from "./VotingArea";
-import { CheckboxArea } from "./CheckboxArea";
-import { Recommendation } from "../../types/Recommendation";
 
 interface RecommendationCardProps {
     currentUser: User | undefined;
@@ -35,22 +34,25 @@ export default function RecommendationCard({
         <>
             <Card height={"100%"}>
                 <CardBody>
-                    <Heading
-                        data-testid="card-heading"
-                        size="md"
-                        textTransform="uppercase"
-                        textAlign={"center"}
-                        noOfLines={1}
-                    >
-                        {oneRecommendation.name}
-                    </Heading>
-                    <Image
-                        src={oneRecommendation.thumbnail_url}
-                        alt="Image not found"
-                        borderRadius="lg"
-                        onClick={onOpen}
-                    />
-                    <Stack p={5}>
+                    <Stack spacing={2}>
+                        <Heading
+                            data-testid="card-heading"
+                            size="md"
+                            textTransform="uppercase"
+                            textAlign={"center"}
+                            noOfLines={1}
+                        >
+                            {oneRecommendation.name}
+                        </Heading>
+                        <Image
+                            src={oneRecommendation.thumbnail_url}
+                            alt="Image not found"
+                            borderRadius="lg"
+                            onClick={onOpen}
+                            width={"100%"}
+                            objectFit={"cover"}
+                            height={"25vh"}
+                        />
                         <Link href={oneRecommendation.url} isExternal>
                             Resource link
                         </Link>
@@ -58,8 +60,6 @@ export default function RecommendationCard({
                             oneRecommendation={oneRecommendation}
                         />
                         <TagsArea oneRecommendation={oneRecommendation} />
-                    </Stack>
-                    <HStack justifyContent={"space-between"} pr={5} pl={5}>
                         <CheckboxArea
                             currentUser={currentUser}
                             oneRecommendation={oneRecommendation}
@@ -69,7 +69,7 @@ export default function RecommendationCard({
                             oneRecommendation={oneRecommendation}
                             setRecommendationList={setRecommendationList}
                         />
-                    </HStack>
+                    </Stack>
                 </CardBody>
             </Card>
             <FullCardView
