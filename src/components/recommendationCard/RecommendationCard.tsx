@@ -54,7 +54,7 @@ export default function RecommendationCard({
                             height={"25vh"}
                         />
                         <Link href={oneRecommendation.url} isExternal>
-                            Resource link
+                            Link to recommended resource
                         </Link>
                         <RecommendationTypeArea
                             oneRecommendation={oneRecommendation}
