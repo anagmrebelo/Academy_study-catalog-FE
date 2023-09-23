@@ -21,6 +21,7 @@ export function CheckboxArea({
             user_id: currentUser?.id,
             url: oneRecommendation.url,
         };
+
         if (isChecked) {
             try {
                 await axios.post(baseURL + "/study-list", dataToSend);
@@ -28,10 +29,14 @@ export function CheckboxArea({
                 console.error("Error adding to study list", error);
             }
         } else {
+            const encodedUrl = encodeURI(oneRecommendation.url);
             try {
-                await axios.delete(baseURL + "/study-list", {
-                    data: dataToSend,
-                });
+                await axios.delete(
+                    `${baseURL}/study-list/${currentUser?.id}/${encodedUrl}`,
+                    {
+                        data: dataToSend,
+                    }
+                );
             } catch (error) {
                 console.error("Error deleting from study list", error);
             }
