@@ -14,16 +14,3 @@ describe("User Login and Logout", () => {
         cy.get('[data-testid="users-dropdown"]');
     });
 });
-// describe("Content", () => {
-//     it("Showing cards with reccomendation from API", () => {
-//         cy.visit("http://localhost:3000/");
-
-//         cy.get('[data-testid="card-heading"]').should(($header) => {
-//             expect($header).to.have.length(3);
-//             expect($header.eq(0)).to.contain("E2E");
-//         });
-//         // cy.get('[data-testid="logout-btn"]').click();
-
-//         // cy.get('[data-testid="users-dropdown"]');
-//     });
-// });
