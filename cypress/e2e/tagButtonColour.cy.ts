@@ -1,6 +1,6 @@
 describe("Check if tag button changes color to blue when clicked", () => {
     it("Selects a random tag from the right side of the screen (Tag Cloud), clicks on a tag, and then the tag changes color to blue.", () => {
-        cy.visit("https://c7c1-study-catalog.netlify.app/");
+        cy.visit("https://c7c1-study-catalog.netlify.app");
 
         // Find and scroll to the tag button in the Tag Cloud section
         cy.get('[data-testid="tag-cloud-area"]').scrollIntoView({
