@@ -44,7 +44,6 @@ export default function TagCloud({
     }
     return (
         <div data-testid="tag-cloud-area">
-            
             {listOfTags.map((t) => (
                 <Button
                     data-testid="tag-cloud-button"
