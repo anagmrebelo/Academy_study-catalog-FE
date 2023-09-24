@@ -45,8 +45,9 @@ export default function CheckUrl({
             alert("Please input a valid URL");
         } else {
             try {
+                const encodedUrl = encodeURIComponent(userUrl);
                 const response = await axios.get(
-                    `${baseURL}/recommendation/validate/${encodeURI(userUrl)}`
+                    `${baseURL}/recommendation/validate/${encodedUrl}`
                 );
                 const responseInfo = response.status;
                 setUrlStatus(responseInfo);
