@@ -45,16 +45,13 @@ export default function CheckUrl({
             alert("Please input a valid URL");
         } else {
             try {
-                const response = await axios.post(
-                    `${baseURL}/recommendation/url`,
-                    {
-                        url: userUrl,
-                    }
+                const response = await axios.get(
+                    `${baseURL}/recommendation/validate/${encodeURI(userUrl)}`
                 );
                 const responseInfo = response.status;
                 setUrlStatus(responseInfo);
             } catch (error) {
-                console.error("this is our error", error);
+                console.error("Error on handleCheckURL", error);
             }
         }
     }
