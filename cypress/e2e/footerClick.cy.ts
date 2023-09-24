@@ -1,5 +1,5 @@
 describe("tests the footer component", () => {
-    it("clicks on the frontend and a new window is opened", () => {
+    it("checks that the site that is requested on click has in its contents the name of the repo", () => {
         cy.visit("https://c7c1-study-catalog.netlify.app");
 
         cy.get('[data-testid="frontend-link"]').then(function ($a) {
@@ -9,7 +9,7 @@ describe("tests the footer component", () => {
 
                 .its("body")
 
-                .should("include", "</html>");
+                .should("include", "Julieta-Sanguedolce/C7C1-frontend");
         });
     });
 });
