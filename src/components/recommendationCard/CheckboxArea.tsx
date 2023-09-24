@@ -29,13 +29,10 @@ export function CheckboxArea({
                 console.error("Error adding to study list", error);
             }
         } else {
-            const encodedUrl = encodeURI(oneRecommendation.url);
+            const encodedUrl = encodeURIComponent(oneRecommendation.url);
             try {
                 await axios.delete(
-                    `${baseURL}/study-list/${currentUser?.id}/${encodedUrl}`,
-                    {
-                        data: dataToSend,
-                    }
+                    `${baseURL}/study-list/${currentUser?.id}/${encodedUrl}`
                 );
             } catch (error) {
                 console.error("Error deleting from study list", error);
