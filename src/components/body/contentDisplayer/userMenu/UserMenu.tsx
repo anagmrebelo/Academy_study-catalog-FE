@@ -1,7 +1,7 @@
 import { Button, ButtonGroup } from "@chakra-ui/react";
-import CheckAndAddResources from "./addResource/CheckAndAddResources";
-import { User } from "../types/User";
-import { Recommendation } from "../types/Recommendation";
+import { Recommendation } from "../../../../types/Recommendation";
+import { User } from "../../../../types/User";
+import NewRecommendation from "./newRecommendation/NewRecommendation";
 
 interface UserMenuProps {
     currentUser: User;
@@ -28,7 +28,7 @@ export default function UserMenu({
                     To Home View
                 </Button>
             )}
-            <CheckAndAddResources
+            <NewRecommendation
                 currentUser={currentUser}
                 setRecommendationList={setRecommendationList}
             />

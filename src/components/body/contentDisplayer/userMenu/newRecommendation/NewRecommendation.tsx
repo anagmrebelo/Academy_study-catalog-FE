@@ -1,20 +1,19 @@
-import { useDisclosure, Button } from "@chakra-ui/react";
-
+import { Button, useDisclosure } from "@chakra-ui/react";
 import { useState } from "react";
-import CheckUrl from "./CheckUrl";
-import AddResouce from "./AddResource";
-import { User } from "../../types/User";
-import { Recommendation } from "../../types/Recommendation";
+import { Recommendation } from "../../../../../types/Recommendation";
+import { User } from "../../../../../types/User";
+import RecommendationForm from "./RecommendationForm";
+import UrlChecker from "./UrlChecker";
 
-interface CheckAndAddResourcesProps {
+interface NewRecommendationProps {
     currentUser: User;
     setRecommendationList: (r: Recommendation[]) => void;
 }
 
-export default function CheckAndAddResources({
+export default function NewRecommendation({
     currentUser,
     setRecommendationList,
-}: CheckAndAddResourcesProps): JSX.Element {
+}: NewRecommendationProps): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [userUrl, setUserUrl] = useState("");
     const [recommendationInputView, setRecommendationInputView] =
@@ -30,7 +29,7 @@ export default function CheckAndAddResources({
         <>
             <Button onClick={onOpen}>Add new resource</Button>
             {!recommendationInputView && (
-                <CheckUrl
+                <UrlChecker
                     setRecommendationInputView={setRecommendationInputView}
                     onClose={onClose}
                     isOpen={isOpen}
@@ -40,7 +39,7 @@ export default function CheckAndAddResources({
                 />
             )}
             {recommendationInputView && (
-                <AddResouce
+                <RecommendationForm
                     setRecommendationList={setRecommendationList}
                     setRecommendationInputView={setRecommendationInputView}
                     onClose={onClose}

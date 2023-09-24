@@ -1,5 +1,5 @@
 import { Badge } from "@chakra-ui/react";
-import { Recommendation } from "../../types/Recommendation";
+import { Recommendation } from "../../../../../types/Recommendation";
 
 interface ReasonAreaProps {
     oneRecommendation: Recommendation;

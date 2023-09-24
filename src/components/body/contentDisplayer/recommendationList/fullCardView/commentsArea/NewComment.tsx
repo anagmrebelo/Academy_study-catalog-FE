@@ -1,22 +1,22 @@
 import { Button, HStack, Input } from "@chakra-ui/react";
-import { useState } from "react";
-import { baseURL } from "../App";
 import axios from "axios";
-import { User } from "../../types/User";
-import { RecommendationComment } from "../../types/RecommendationComment";
-import { Recommendation } from "../../types/Recommendation";
+import { useState } from "react";
+import { Recommendation } from "../../../../../../types/Recommendation";
+import { RecommendationComment } from "../../../../../../types/RecommendationComment";
+import { User } from "../../../../../../types/User";
+import { baseURL } from "../../../../../App";
 
-interface AddCommentProps {
+interface NewCommentProps {
     currentUser: User | undefined;
     oneRecommendation: Recommendation;
     setComments: React.Dispatch<React.SetStateAction<RecommendationComment[]>>;
 }
 
-export default function AddComment({
+export default function NewComment({
     currentUser,
     oneRecommendation,
     setComments,
-}: AddCommentProps): JSX.Element {
+}: NewCommentProps): JSX.Element {
     const [commentInput, setCommentInput] = useState("");
 
     const handleAddComment = async () => {

@@ -1,18 +1,18 @@
 import { Checkbox } from "@chakra-ui/react";
 import axios from "axios";
-import { User } from "../../types/User";
-import { baseURL } from "../App";
-import { Recommendation } from "../../types/Recommendation";
+import { Recommendation } from "../../../../../types/Recommendation";
+import { User } from "../../../../../types/User";
+import { baseURL } from "../../../../App";
 
-interface CheckboxAreaProps {
+interface AdditionToStudyListAreaProps {
     currentUser: User | undefined;
     oneRecommendation: Recommendation;
 }
 
-export function CheckboxArea({
+export function AdditionToStudyListArea({
     currentUser,
     oneRecommendation,
-}: CheckboxAreaProps): JSX.Element {
+}: AdditionToStudyListAreaProps): JSX.Element {
     async function handleAddToStudyList(
         e: React.ChangeEvent<HTMLInputElement>
     ) {

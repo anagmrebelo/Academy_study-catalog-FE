@@ -6,9 +6,9 @@ import {
     StackDivider,
     Text,
 } from "@chakra-ui/react";
-import { Recommendation } from "../../types/Recommendation";
 import ReasonArea from "../recommendationCard/RecommendationTypeArea";
 import TagsArea from "../recommendationCard/TagsArea";
+import { Recommendation } from "../../../../../types/Recommendation";
 
 interface FullCardDetailsProps {
     oneRecommendation: Recommendation;

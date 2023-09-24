@@ -1,8 +1,8 @@
 import { Select } from "@chakra-ui/react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { baseURL } from "./App";
-import { User } from "../types/User";
+import { baseURL } from "../../App";
+import { User } from "../../../types/User";
 
 interface UsersDropdownProps {
     setCurrentUser: (user: User | undefined) => void;

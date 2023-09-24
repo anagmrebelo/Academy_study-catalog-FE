@@ -15,9 +15,9 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
-import { baseURL } from "../App";
+import { baseURL } from "../../../../App";
 
-interface CheckUrlProps {
+interface UrlCheckerProps {
     setRecommendationInputView: (b: boolean) => void;
     onClose: () => void;
     isOpen: boolean;
@@ -26,14 +26,14 @@ interface CheckUrlProps {
     handleCancel: () => void;
 }
 
-export default function CheckUrl({
+export default function UrlChecker({
     setRecommendationInputView,
     onClose,
     isOpen,
     userUrl,
     setUserUrl,
     handleCancel,
-}: CheckUrlProps): JSX.Element {
+}: UrlCheckerProps): JSX.Element {
     const [urlStatus, setUrlStatus] = useState<number>();
 
     function handleProceed() {

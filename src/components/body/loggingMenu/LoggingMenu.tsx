@@ -1,18 +1,16 @@
-// import axios from "axios";
-// import { baseURL } from "./App";
 import { Button, HStack } from "@chakra-ui/react";
+import { User } from "../../../types/User";
 import UsersDropdown from "./UsersDropdown";
-import { User } from "../types/User";
 
-interface LogBarProps {
+interface LoggingMenuProps {
     currentUser: User | undefined;
     setCurrentUser: (user: User | undefined) => void;
 }
 
-export default function LogBar({
+export default function LoggingMenu({
     currentUser,
     setCurrentUser,
-}: LogBarProps): JSX.Element {
+}: LoggingMenuProps): JSX.Element {
     return (
         <div>
             {currentUser === undefined && (

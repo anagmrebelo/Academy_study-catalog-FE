@@ -7,10 +7,10 @@ import {
     Stack,
     useDisclosure,
 } from "@chakra-ui/react";
-import { Recommendation } from "../../types/Recommendation";
-import { User } from "../../types/User";
+import { Recommendation } from "../../../../../types/Recommendation";
+import { User } from "../../../../../types/User";
 import FullCardView from "../fullCardView/FullCardView";
-import { CheckboxArea } from "./CheckboxArea";
+import { AdditionToStudyListArea } from "./AdditionToStudyListArea";
 import RecommendationTypeArea from "./RecommendationTypeArea";
 import TagsArea from "./TagsArea";
 import VotingArea from "./VotingArea";
@@ -60,7 +60,7 @@ export default function RecommendationCard({
                             oneRecommendation={oneRecommendation}
                         />
                         <TagsArea oneRecommendation={oneRecommendation} />
-                        <CheckboxArea
+                        <AdditionToStudyListArea
                             currentUser={currentUser}
                             oneRecommendation={oneRecommendation}
                         />

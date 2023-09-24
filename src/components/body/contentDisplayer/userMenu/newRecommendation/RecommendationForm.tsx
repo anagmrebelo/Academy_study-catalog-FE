@@ -16,13 +16,13 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
-import { baseURL } from "../App";
-import { TagCloudView } from "../TagCloud";
-import { User } from "../../types/User";
-import { fetchRecommendations } from "../RecommendationBoard";
-import { Recommendation } from "../../types/Recommendation";
+import { baseURL } from "../../../../App";
+import { TagCloudView } from "../../TagCloud";
+import { User } from "../../../../../types/User";
+import { fetchRecommendations } from "../../ContentDisplayer";
+import { Recommendation } from "../../../../../types/Recommendation";
 
-interface AddResourceUrlProps {
+interface RecommendationFormProps {
     setRecommendationInputView: (b: boolean) => void;
     onClose: () => void;
     isOpen: boolean;
@@ -33,7 +33,7 @@ interface AddResourceUrlProps {
     setRecommendationList: (r: Recommendation[]) => void;
 }
 
-export default function AddResouce({
+export default function RecommendationForm({
     setRecommendationInputView,
     onClose,
     isOpen,
@@ -42,7 +42,7 @@ export default function AddResouce({
     setUserUrl,
     currentUser,
     setRecommendationList,
-}: AddResourceUrlProps): JSX.Element {
+}: RecommendationFormProps): JSX.Element {
     const [formData, setFormData] = useState({
         name: "",
         author: "",

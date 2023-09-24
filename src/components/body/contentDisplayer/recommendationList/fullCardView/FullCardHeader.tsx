@@ -9,8 +9,8 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
-import { Recommendation } from "../../types/Recommendation";
-import { baseURL } from "../App";
+import { Recommendation } from "../../../../../types/Recommendation";
+import { baseURL } from "../../../../App";
 
 interface FullCardHeaderProps {
     oneRecommendation: Recommendation;

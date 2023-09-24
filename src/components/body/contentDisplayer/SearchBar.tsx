@@ -7,10 +7,10 @@ import {
     Stack,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { Recommendation } from "../types/Recommendation";
-import { User } from "../types/User";
-import { baseURL } from "./App";
-import { fetchRecommendations } from "./RecommendationBoard";
+import { Recommendation } from "../../../types/Recommendation";
+import { User } from "../../../types/User";
+import { baseURL } from "../../App";
+import { fetchRecommendations } from "./ContentDisplayer";
 
 interface SearchBarProps {
     searchedPhrase: string;

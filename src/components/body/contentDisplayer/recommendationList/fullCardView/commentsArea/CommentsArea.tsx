@@ -2,11 +2,11 @@ import { Avatar, Box, Flex, Heading, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
-import { RecommendationComment } from "../../types/RecommendationComment";
-import { User } from "../../types/User";
-import { baseURL } from "../App";
-import AddComment from "./AddComment";
-import { Recommendation } from "../../types/Recommendation";
+import { Recommendation } from "../../../../../../types/Recommendation";
+import { RecommendationComment } from "../../../../../../types/RecommendationComment";
+import { User } from "../../../../../../types/User";
+import { baseURL } from "../../../../../App";
+import NewComment from "./NewComment";
 
 interface CommentsAreaProps {
     oneRecommendation: Recommendation;
@@ -41,7 +41,7 @@ export default function CommentsArea({
                 Comments ({comments.length})
             </Heading>
             {currentUser && (
-                <AddComment
+                <NewComment
                     currentUser={currentUser}
                     oneRecommendation={oneRecommendation}
                     setComments={setComments}

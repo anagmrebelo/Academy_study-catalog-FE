@@ -8,11 +8,11 @@ import {
     Stack,
     StackDivider,
 } from "@chakra-ui/react";
-import { Recommendation } from "../../types/Recommendation";
-import { User } from "../../types/User";
-import CommentsArea from "./CommentsArea";
+import CommentsArea from "./commentsArea/CommentsArea";
 import FullCardDetails from "./FullCardDetails";
 import FullCardHeader from "./FullCardHeader";
+import { Recommendation } from "../../../../../types/Recommendation";
+import { User } from "../../../../../types/User";
 
 interface FullCardViewProps {
     isOpen: boolean;

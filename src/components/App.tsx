@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Footer from "./Footer";
 import Header from "./Header";
-import MainView from "./MainView";
+import Body from "./body/Body";
 import axios from "axios";
 import Loading from "./Loading";
 import { Stack } from "@chakra-ui/react";
@@ -31,7 +31,7 @@ function App() {
                 <>
                     <Stack minHeight={"100vh"}>
                         <Header />
-                        <MainView />
+                        <Body />
                     </Stack>
                     <Footer />
                 </>

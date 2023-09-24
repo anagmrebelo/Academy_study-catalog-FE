@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { baseURL } from "./App";
+import { baseURL } from "../../App";
 import { Button } from "@chakra-ui/react";
 import axios from "axios";
 
