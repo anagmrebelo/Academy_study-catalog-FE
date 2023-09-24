@@ -11,6 +11,7 @@ export default function Footer(): JSX.Element {
             bg={"white"}
         >
             <Link
+                data-testid="frontend-link"
                 href="https://github.com/Julieta-Sanguedolce/C7C1-frontend"
                 isExternal
             >
