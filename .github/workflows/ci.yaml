@@ -19,7 +19,7 @@ jobs:
               run: yarn lint
             - name: Check types compile
               run: yarn type-check
-            - name: Check unitary tests pass
+            - name: Check unit tests pass
               run: yarn test
             - name: Check e2e test pass
               run: yarn cypress run
