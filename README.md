@@ -1,6 +1,7 @@
 # React app - C7C1 Study Catalog
 
 ### Group project by Julieta Sanguedolce, Silviu Ichim, Wiktoria Dromarecka and Ana Rebelo
+<img width="2219" alt="Screen Shot 2023-10-20 at 12 28 35 AM" src="https://github.com/anagmrebelo/Academy_study-catalog-FE/assets/66007323/101e1026-0ef0-444e-bd5f-48aa8a4e522d">
 
 Welcome to our Study Catalog. This app is designed to be the place to store different resources where we can learn more about software engineering.
 
